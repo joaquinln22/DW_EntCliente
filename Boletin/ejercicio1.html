@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Ejercicio 1</title>
+        <script>
+           let num=0;
+           let suma=0;
+           let conta=0;
+           do{
+            num=parseInt(prompt("Ingresa un número: "));
+            if(num>=0){
+                suma+=num;
+                conta++;
+                console.log(suma);
+                console.log(conta);
+            }
+           }while(num>=0);
+           let media=suma/conta;
+           console.log("Suma total de los número ingresados: " + suma);
+           alert("Suma total de los número ingresados: " + suma);
+           console.log("Media de los números ingresados: " + media);
+           alert("Media de los números ingresados: " + media);
+        </script> 
+    </head>
+    <body>
+        <h1>Boletin</h1>
+    </body>
+</html>

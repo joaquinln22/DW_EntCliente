@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+    <script>
+        const numeroAleatorio=Math.floor(Math.random()*(80-20+1))+20;
+        do{
+            var num=parseInt(prompt("Se ha generado un número entre 20 y 80. Adivine el número: ")); 
+            if(isNaN(num)){
+                alert("ERROR! No has introducido un valor válido.");
+            }else if(num<20 || num>80){
+                alert("ERROR! No has introducido un número dentro del rango.");
+            }else if(num<numeroAleatorio){
+                alert("El número ingresado es menor que el generado.");
+            }else if(num>numeroAleatorio){
+                alert("El número ingresado es mayor que el generado.");
+            }
+        }while(num!=numeroAleatorio);
+        alert("CORRECTO!! El número es " + numeroAleatorio);
+    </script>
+</head>
+<body>
+    <h1>Boletín Joaquín</h1>
+</body>
+</html>

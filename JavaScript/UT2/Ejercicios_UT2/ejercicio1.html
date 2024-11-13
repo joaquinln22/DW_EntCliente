@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Ejercicio 1</title>
+        <script>
+            var suma=0;
+            var media=0;
+            var conta=0;
+            do{
+                var numero=parseInt(prompt("Introduce un número: "));
+                if(isNaN(numero)){
+                    alert("No es un número");
+                }else if(numero>=0){
+                    suma=suma+numero;
+                    conta++;
+                } 
+            }while(numero>=0 || isNaN(numero));
+            media=suma/conta;
+            alert("La suma de todos los números ingresados es " + suma);
+            alert("La media de estos números es " + media);
+
+        </script>
+    </head>
+    <body>
+        <h1> Ejercicios U.T.2 </h1>
+    </body>
+</html>

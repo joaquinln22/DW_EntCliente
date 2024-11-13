@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Ejercicio 2</title>
+        <script>
+           let num=0;
+           let contaP=0;
+           do{
+            num=parseInt(prompt("Ingresa un número: "));
+            if(isNaN(num)){
+                alert("Error! No has introducido un valor válido.")
+            }else{
+                if(num%2==0){
+                    console.log("El número " + num + " es par.");
+                    contaP++;
+                }else if(num%2!=0){
+                    console.log("El número " + num + " es impar.");
+                    contaP=0;
+                } 
+            } 
+           }while(contaP<3);
+           alert("Se han introducido 3 números pares seguídos.");
+        </script> 
+    </head>
+    <body>
+        <h1>Boletin</h1>
+    </body>
+</html>

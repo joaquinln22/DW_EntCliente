@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="demo"></p>
+    <script>
+    /************** Definición de la clase cubo **************/
+    class Cubo{
+        constructor (arg1, arg2, arg3){
+            this.x=parseInt(arg1);
+            this.y=parseInt(arg2);
+            this.z=parseInt(arg3);
+        }
+
+        //Métodos
+        get area(){
+            return this.x*this.y;
+        }
+        get volumen(){
+            return this.x*this.y*this.z;
+        }
+    }
+    /*************** Fin de la declaración de la clase **************/
+
+    /*************** Definición de funciones que usan los objetos **************/
+    function myFunction(){
+        var volMax=0, vol=1, j=0;
+        for(var i=0; i<arguments.length; i++){
+            console.log("Volumen "+(i+1)+"--> "+(arguments[i].volumen));
+            vol=arguments[i].volumen;
+            area=arguments[i].area;
+            console.log("Area "+(i+1)+"--> "+(arguments[i].area));
+            if(vol>volMax){
+                volMax=vol;
+                j=i;
+            }
+        }
+        return j;
+    }
+
+    // Creación de los objetos
+    var cubo1=new Cubo(1, 2, 3);       //Volumen de este cubo 6
+    var cubo2 = new Cubo(6, 9, 4);       //Volumen de este cubo 216
+    var cubo3 = new Cubo(2, 5, 6);       //Volumen de este cubo 60
+    var cubo4 = new Cubo(12, 17, 2);     //Volumen de este cubo 408
+    var cubo5 = new Cubo(6, 8, 7);       //Volumen de este cubo 336
+        
+    var cuboConMayorVolumen= (myFunction(cubo1, cubo2, cubo3, cubo4, cubo5))+1;	//Se le suma 1 para que te de la posición en vez de el índice
+    document.getElementById("demo").innerHTML = "El mayor cubo es: " + cuboConMayorVolumen;
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function poner_valor(num){
+            if(document.getElementById("ventana") . value == 0){
+                document.getElementById("ventana") . value = num;
+            }else{
+                document.getElementById("ventana") . value += num;
+            }
+        }
+
+        function borrar(){
+            document.getElementById("ventana") . value = 0;
+        }
+    </script>
+</head>
+<body>
+    <fron size="15">
+        <center>CALCULADORA</center>
+        <input type="text" readonly name="ventana" id="ventana" style="text-align: right" value="0">
+        <br>
+        <button style="width: 20%" onclick="poner_valor(7)">7</button>
+        <br>
+        <button style="width: 20%" onclick="borrar()">Borrar</button>
+    </fron>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        } 
+
+        #circulo {
+            width: 200px;
+            height: 200px;
+            background-color: black;
+            color:white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 565px;
+            font-size: 24px;
+        }
+
+        #ranking {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        #iniciarBtn, #abortarBtn {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ejercicio 4</h1>
+
+    <div id="circulo">
+        <span id="temporizador">5.000</span>
+    </div>
+
+    <button id="iniciarBtn" onclick="iniciarMision()">Iniciar Misión</button>
+    <button id="abortarBtn" onclick="abortarMision()" disabled>Abortar Misión</button>
+
+    <div id="ranking"></div>
+
+    <script>
+        let tiempoRestante = 5000;
+        let intervalId;
+        let rankingHtml = "<b>Ranking:</b><br>";
+
+        function iniciarTemporizador() {
+            intervalId = setInterval(function() {
+                tiempoRestante -= 10;
+
+                actualizarTemporizador();
+
+                if (tiempoRestante <= 0) {
+                    finalizarMision();
+                }
+            }, 10);
+        }
+
+        function actualizarTemporizador() {
+            document.getElementById('temporizador').textContent = (tiempoRestante / 1000).toFixed(3);
+        }
+
+        function finalizarMision() {
+            clearInterval(intervalId);
+
+            alert("Misión fracasada. ¡La Fuerza no estaba contigo esta vez!");
+
+            mostrarRanking();
+            
+            document.getElementById('iniciarBtn').disabled = false;
+            document.getElementById('abortarBtn').disabled = true;
+        }
+
+        function iniciarMision() {
+            tiempoRestante = 5000;
+
+            document.getElementById('iniciarBtn').disabled = true;
+            document.getElementById('abortarBtn').disabled = false;
+
+            iniciarTemporizador();
+        }
+
+        function abortarMision() {
+            clearInterval(intervalId);
+            const tiempoAborto = 5000 - tiempoRestante;
+
+            const nombre = prompt("¡Abortado! Ingresa tu nombre para registrar tu intento:");
+            
+            if (nombre) {
+                rankingHtml += nombre + ": " + (tiempoAborto / 1000).toFixed(2) + " segundos";
+
+                mostrarRanking();
+                document.getElementById('iniciarBtn').disabled = false;
+                document.getElementById('abortarBtn').disabled = true;
+            } else {
+                alert("Intento abortado sin registrar en el ranking.");
+            }
+        }
+
+        function mostrarRanking() {
+            document.getElementById('ranking').innerHTML = rankingHtml;
+        }
+
+        window.onload = function() {
+            document.getElementById('iniciarBtn').onclick = iniciarMision;
+            document.getElementById('abortarBtn').onclick = abortarMision;
+        };
+    </script>
+</body>
+</html>

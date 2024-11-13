@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartas pokemon</title>
+</head>
+<body>
+    <p id="demo"></p>
+    <script>
+        /************** Definición de la clase carta **************/
+        class Carta{
+            constructor (arg1, arg2){
+                this.nombre_carta=arg1;
+                this.carta_imagen=arg2;
+            }
+
+            //Métodos
+            get nombre(){
+                return this.nombre_carta;
+            }
+            get carta(){
+                return this.carta_imagen;
+            }
+        }
+        /*************** Fin de la declaración de la clase **************/
+
+        function myFunction(){
+            return arguments.nombre+"\n"+arguments.carta;
+        }
+
+        // Creación de los objetos
+        var carta1=new Carta("Pikachu", "images/pikachu.png");   
+        var carta2 = new Carta("Zekrom", "images/zekrom.png");     
+        var carta3 = new Carta("Mewtwo", "images/mewtwo.jpg");     
+        var carta4 = new Carta("Kyurem", "images/kyurem.png");            
+        
+        var mostrar=myFunction(carta1, carta2, carta3, carta4);
+        document.getElementById("demo").innerHTML = mostrar;
+
+    </script>
+</body>
+</html>

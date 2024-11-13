@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+    <script>
+        var altura=parseInt(prompt("Ingrese la altura de la pirámide:"));
+        var piramide="";
+        for(let i=1; i<=altura; i++){
+            for(let y=1; y<i; y++){
+                piramide=piramide+" ";
+            }
+            for(let j=i; j<=altura; j++){
+                piramide=piramide+"*";
+            }
+            piramide=piramide+"\n";
+        }
+        alert(piramide);
+
+    </script>
+</head>
+<body>
+    <h1>Boletín Joaquín</h1>
+</body>
+</html>

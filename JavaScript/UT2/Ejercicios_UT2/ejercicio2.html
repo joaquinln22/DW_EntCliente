@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Ejercicio 2</title>
+        <script>
+        let menor=0;
+        let mayor=0;
+        let rango="";
+        do{
+            menor=parseInt(prompt("Ingresa el límite inferior: "));
+            mayor=parseInt(prompt("Ingresa el límite mayor: "));
+            if(menor>=mayor || isNaN(menor) || isNaN(mayor)){
+                alert("Error!! el rango introducido no es válido.");
+            }
+        }while(menor>=mayor || isNaN(menor) || isNaN(mayor));
+        for(let i=menor+1; i<mayor; i++){
+            alert(i);
+        }
+        
+        
+        </script> 
+    </head>
+    <body>
+        <h1>Ejercicios U.T.2</h1>
+    </body>
+</html>

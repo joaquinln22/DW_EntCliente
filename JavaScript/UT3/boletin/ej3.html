@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+</head>
+<body>
+    <h1>Cifrador ROT de una Letra</h1>
+    
+    <label for="letra">Introduce una letra:</label>
+    <input type="text" id="letra" maxlength="1">
+    <label for="seleccion">Selecciona el desplazamiento ROT: </label>
+    <select id="cifrados" name="cifrados">
+        <option value="ROT1">ROT1</option>
+        <option value="ROT13">ROT13</option>
+        <option value="ROT18">ROT18</option>
+      </select>
+    <button onclick="cifrar()">Cifrar y Concatenar</button>
+
+    <h2>Resultado cifrado: </h2>
+    <p id="resultado"></p>
+
+    <script>
+        function cifrar() {
+            let letra = document.getElementById("letra").value.toLowerCase();
+			let resultadoCifrado="";
+            let seleccion=document.getElementById("cifrados").value;
+
+            if(seleccion==="ROT1"){
+                resultadoCifrado = rot1(letra);
+            }else if(seleccion==="ROT13"){
+                resultadoCifrado=rot13(letra);
+            }else if(seleccion==="ROT18"){
+                resultadoCifrado=rot18(letra);
+            }
+
+			mostrarResultado(resultadoCifrado);
+			document.getElementById("letra").value = "";
+        }
+
+        function rot1(letra) {
+            let codigo = letra.charCodeAt(0);
+
+            if (codigo >= 97 && codigo <= 122) {
+                return String.fromCharCode(((codigo - 97 + 1) % 26) + 97);
+            } else {
+                return letra;
+            }
+        }
+
+        function rot13(letra) {
+            let codigo = letra.charCodeAt(0);
+
+            if (codigo >= 97 && codigo <= 122) {
+                return String.fromCharCode(((codigo - 97 + 13) % 26) + 97);
+            } else {
+                return letra;
+            }
+        }
+
+        function rot18(letra) {
+            let codigo = letra.charCodeAt(0);
+
+            if (codigo >= 97 && codigo <= 122) {
+                return String.fromCharCode(((codigo - 97 + 18) % 26) + 97);
+            } else {
+                return letra;
+            }
+        }
+
+        function mostrarResultado(resultado) {
+            let resultadoElemento = document.getElementById("resultado");
+            resultadoElemento.textContent += resultado;
+        }
+    </script>
+</body>
+</html>

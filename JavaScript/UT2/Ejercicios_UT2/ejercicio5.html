@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Ejercicio 5</title>
+        <script>
+            let dia="";
+            dia=prompt("Ingresa una letra (L, M, X, J, V, S, D):");
+            console.log(dia);
+            let letra=dia.toUpperCase();
+            console.log(letra);
+            if(letra!="L" && letra!="M" && letra!="X" && letra!="J" && letra!="V" && letra!="S" && letra!="D"){
+                alert("No has introducido un valor correcto!!");
+            }else{
+                switch(letra){
+                    case "L":
+                    case "M":
+                    case "X":
+                    case "J":
+                    case "V":
+                        alert(letra + " es un día laboral."); 
+                        break;
+                    case "S":
+                    case "D":
+                        alert(letra + " es un día de fin de semana.");
+                        break;
+                }
+            }
+        </script> 
+    </head>
+    <body>
+        <h1>Ejercicios U.T.2</h1>
+    </body>
+</html>

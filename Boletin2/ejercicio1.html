@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+    <script>
+        do{
+            var num=parseInt(prompt("Ingrese un número: "));
+            if(isNaN(num)){
+                alert("ERROR! No has introducido un valor válido.");
+            }else if(num<30 || num>40){
+                alert("ERROR! El número proporcionado está fuera de rango.")
+            }
+        }while(num<30 || num>40);
+        function tabla_multi(num){
+            var tabla="";
+            for(let i=1; i<=10; i++){
+                let result=num*i;
+                tabla=tabla + num + " * " + i + " = "  + result + "<br>";
+            }
+            return tabla;
+        }
+
+    </script>
+</head>
+<body>
+    <h1>Boletín Joaquín</h1>
+    <p id="tabla"></p>
+
+    <script>
+    document.getElementById("tabla").innerHTML = tabla_multi(num);
+    </script> 
+</body>
+</html>
