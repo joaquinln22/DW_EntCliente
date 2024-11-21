@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 5</title>
+</head>
+<body>
+    <h3>Enunciado ejercicio</h3>
+    <p>Pide al usuario que introduzca una fecha en formato YYYY-MM-DD.</p>
+    <p>Escribe una función llamada esFechaValida(fecha) que valide si la fecha introducida es válida.</p>
+    <p>Muestra un mensaje indicando si la fecha es correcta o no.</p><br>
+    Fecha en formato YYYY-MM-DD <input type="text" id="fecha1"><br>
+    <button onclick="validarFecha()">Verificar</button>
+    <p id="fecha"></p> <!-- Se usa para indicar donde se va a mostrar el resultado del script-->
+    <script>
+        function esFechaValida(fecha1){
+            var fecha=new Date(fecha1);
+            return !isNaN(fecha.getTime());
+        }
+        function validarFecha(){
+            var fecha=document.getElementById("fecha1").value;
+            if(esFechaValida(fecha)){
+                document.getElementById("fecha").innerHTML="La fecha introducida es valida "+fecha;
+            }else{
+                document.getElementById("fecha").innerHTML="La fecha introducida NO es valida";
+            }
+        }
+    </script>
+</body>
+</html>

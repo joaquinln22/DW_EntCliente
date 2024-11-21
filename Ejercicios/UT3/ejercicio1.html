@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+</head>
+<body>
+    <h3>Enunciado ejercicio</h3>
+    <p>Crea un objeto Date con la fecha actual.</p>
+    <p>Luego, formatea la fecha actual para que se muestre en el formato DD/MM/YYYY.</p>
+    <p>Imprime la fecha formateada en pantalla.</p><br>
+
+    <p id="fecha"></p>
+
+    <script>
+        const fechaActual=new Date();
+        var dia=fechaActual.getDate();
+        var mes=fechaActual.getDate()+1;
+        var anio=fechaActual.getFullYear();
+        var fechaFormateada= dia.toString()+"/"+mes.toString()+"/"+anio.toString();
+        document.getElementById("fecha").innerHTML= "Fecha formateada DD/MM/AA -->"+fechaFormateada;
+    </script>
+</body>
+</html>

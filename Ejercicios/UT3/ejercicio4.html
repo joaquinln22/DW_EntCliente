@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4</title>
+</head>
+<body>
+    <h3>Enunciado ejercicio</h3>
+    <p>Pide al usuario que introduzca una fecha en formato YYYY-MM-DD (usa un input de tipo Date).</p>
+    <p>Determina qué día de la semana corresponde a esa fecha.</p>
+    <p>Muestra el resultado en la consola (por ejemplo: "Lunes", "Martes", etc.).</p><br>
+
+    Introduce una fecha en formato YYYY-MM-DD: <input type="text" id="fecha">
+    <button onclick="validarFecha()">Día de la semana</button>
+    <p id="fecha1"></p> <!-- Se usa para indicar donde se va a mostrar el resultado del script-->
+    <script>
+        function validarFecha(fecha){
+            var fecha1=new Date(fecha);
+            return !isNan(fecha1.getTime());
+        }
+        function diaSemana(){
+            var fecha1=document.getElementById("fecha").value;
+            
+            if(validarFecha(fecha)){
+                document.getElementById("fecha1").innerHTML=""
+            }
+        }
+    </script>
+
+</body>
+</html>
