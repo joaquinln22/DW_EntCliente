@@ -13,7 +13,7 @@
     Fecha 1 <input type="date" id="fecha1"><br>
     Fecha 2 <input type="date" id="fecha2"><br>
     <button onclick="calcularDiferencia()">Calcular</button>
-    <p id="fecha"></p>
+    <p id="demo"></p>
 
     <script>
         function calcularDiferencia(){
@@ -24,7 +24,7 @@
             var diferenciaMin=diferenciaSeg/60;
             var diferenciaHor=diferenciaMin/60;
             var diferenciaDias=diferenciaHor/24;
-            document.getElementById("fecha").innerHTML="Diferencia entre las fechas "+diferenciaDias+" días."
+            document.getElementById("demo").innerHTML="Diferencia entre las fechas "+diferenciaDias+" días."
         }
     </script>
 </body>

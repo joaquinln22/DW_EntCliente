@@ -11,15 +11,15 @@
     <p>Luego, formatea la fecha actual para que se muestre en el formato DD/MM/YYYY.</p>
     <p>Imprime la fecha formateada en pantalla.</p><br>
 
-    <p id="fecha"></p>
+    <p id="demo"></p>
 
     <script>
         const fechaActual=new Date();
         var dia=fechaActual.getDate();
-        var mes=fechaActual.getDate()+1;
+        var mes=fechaActual.getMonth()+1;
         var anio=fechaActual.getFullYear();
         var fechaFormateada= dia.toString()+"/"+mes.toString()+"/"+anio.toString();
-        document.getElementById("fecha").innerHTML= "Fecha formateada DD/MM/AA -->"+fechaFormateada;
+        document.getElementById("demo").innerHTML= "Fecha formateada DD/MM/AA -->"+fechaFormateada;
     </script>
 </body>
 </html>

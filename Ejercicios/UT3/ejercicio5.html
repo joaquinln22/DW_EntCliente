@@ -8,22 +8,22 @@
 <body>
     <h3>Enunciado ejercicio</h3>
     <p>Pide al usuario que introduzca una fecha en formato YYYY-MM-DD.</p>
-    <p>Escribe una función llamada esFechaValida(fecha) que valide si la fecha introducida es válida.</p>
+    <p>Escribe una función llamada esFechaValida() que valide si la fecha introducida es válida.</p>
     <p>Muestra un mensaje indicando si la fecha es correcta o no.</p><br>
-    Fecha en formato YYYY-MM-DD <input type="text" id="fecha1"><br>
+    Fecha en formato YYYY-MM-DD <input type="text" id="fecha"><br>
     <button onclick="validarFecha()">Verificar</button>
-    <p id="fecha"></p> <!-- Se usa para indicar donde se va a mostrar el resultado del script-->
+    <p id="demo"></p> <!-- Se usa para indicar donde se va a mostrar el resultado del script-->
     <script>
-        function esFechaValida(fecha1){
-            var fecha=new Date(fecha1);
+        function esFechaValida(fecha){
+            var fechita=new Date(fecha);
             return !isNaN(fecha.getTime());
         }
         function validarFecha(){
-            var fecha=document.getElementById("fecha1").value;
+            var fecha=document.getElementById("fecha").value;
             if(esFechaValida(fecha)){
-                document.getElementById("fecha").innerHTML="La fecha introducida es valida "+fecha;
+                document.getElementById("demo").innerHTML="La fecha introducida es valida "+fecha;
             }else{
-                document.getElementById("fecha").innerHTML="La fecha introducida NO es valida";
+                document.getElementById("demo").innerHTML="La fecha introducida NO es valida";
             }
         }
     </script>

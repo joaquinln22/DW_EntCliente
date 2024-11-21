@@ -11,21 +11,17 @@
     <p>Determina qué día de la semana corresponde a esa fecha.</p>
     <p>Muestra el resultado en la consola (por ejemplo: "Lunes", "Martes", etc.).</p><br>
 
-    Introduce una fecha en formato YYYY-MM-DD: <input type="text" id="fecha">
-    <button onclick="validarFecha()">Día de la semana</button>
-    <p id="fecha1"></p> <!-- Se usa para indicar donde se va a mostrar el resultado del script-->
+    Introduce una fecha en formato YYYY-MM-DD: <input type="date" id="fecha">
+    <button onclick="diaSemana()">Día de la semana</button>
+    <p id="demo"></p> <!-- Se usa para indicar donde se va a mostrar el resultado del script-->
     <script>
-        function validarFecha(fecha){
-            var fecha1=new Date(fecha);
-            return !isNan(fecha1.getTime());
-        }
         function diaSemana(){
-            var fecha1=document.getElementById("fecha").value;
-            
-            if(validarFecha(fecha)){
-                document.getElementById("fecha1").innerHTML=""
-            }
+            const dias=["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+            const fechita=new Date(document.getElementById("fecha").value);
+            var dia=dias[fechita.getDay()];
+            document.getElementById("demo").innerHTML=dia;
         }
+        
     </script>
 
 </body>

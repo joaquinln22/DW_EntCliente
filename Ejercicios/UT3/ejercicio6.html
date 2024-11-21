@@ -10,6 +10,19 @@
     <p>Escribe una función que calcule cuántos días faltan para la próxima Navidad (25 de diciembre del año actual).</p>
     <p>Si ya pasó el 25 de diciembre este año, debe calcular los días hasta el 25 de diciembre del próximo año.</p>
     <p>Muestra el resultado en la pantalla.</p><br>
+
+    <p id="demo"></p>
+
+    <script>
+        const fecha=new Date();
+        const navidad=new Date("2024-12-25");
+        var d_navidad=navidad.getTime()-fecha.getTime();
+        d_navidad=d_navidad/1000;
+        d_navidad=d_navidad/60;
+        d_navidad=d_navidad/60;
+        d_navidad=d_navidad/24;
+        document.getElementById("demo").innerHTML="Quedan "+d_navidad+" días para navidad."
+    </script>
     
 </body>
 </html>
