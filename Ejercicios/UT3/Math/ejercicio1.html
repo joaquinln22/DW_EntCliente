@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+</head>
+<body>
+    <h3>Enunciado ejercicio</h3>
+    <p>Pide al usuario que introduzca un número decimal (usa un input).</p>
+    <p>Usando los métodos de Math, muestra en la pantalla:</p>
+    <p>&nbsp;&nbsp;- El número redondeado al entero más cercano.</p>
+    <p>&nbsp;&nbsp;- El número redondeado hacia arriba.</p>
+    <p>&nbsp;&nbsp;- El número redondeado hacia abajo.</p><br>
+    <label for="numero">Introduce un número decimal</label>
+    <input type="number" name="numero" id="numero">
+    <button onclick="mostrar()">Calcular</button>
+    
+    <p id="demo"></p>
+
+    <script>
+        function mostrar(){
+            let numerito=parseFloat(document.getElementById("numero").value);
+        }
+    </script>
+    
+</body>
+</html>

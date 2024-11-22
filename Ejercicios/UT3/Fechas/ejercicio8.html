@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 8</title>
+</head>
+<body>
+    <h3>Enunciado ejercicio</h3>
+    <p>Elabora una web que reciba dos fechas como parámetros, incluyendo únicamente el
+        año, el mes y el día. Posteriormente, la función deberá calcular la diferencia en
+        milisegundos entre ambas fechas.</p><br>
+    Fecha 1: <input type="date" id="fecha1">
+    Fecha 2: <input type="date" id="fecha2">
+    <button onclick="milisegundos()">Milisegundos de diferencia</button>
+    
+    <p id="demo"></p>
+
+    <script>
+        function milisegundos(){
+            const fechita1=new Date(document.getElementById("fecha1").value).getTime();
+            const fechita2=new Date(document.getElementById("fecha2").value).getTime();
+
+            var mili;
+            if(fechita1>fechita2){
+                mili=fechita1-fechita2;
+            }else{
+                mili=fechita2-fechita1;
+            }
+            
+
+            document.getElementById("demo").innerHTML="Hay "+mili+" milisegundos de diferencia.";
+        }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 9</title>
+</head>
+<body>
+    <h3>Enunciado ejercicio</h3>
+    <p>Implementa una web que, al recibir una fecha como parámetro, devuelva el día de
+        la semana (lunes, martes, miércoles, jueves, viernes, sábado o domingo) que
+        corresponderá a la fecha que se encontrará dentro de 30 días a partir de la fecha
+        proporcionada.</p><br>
+    Fecha: <input type="date" id="fecha">
+    <button onclick="dia_en_un_mes()">Día de la semana</button>
+    
+    <p id="demo"></p>
+
+    <script>
+        function dia_en_un_mes(){
+            const fechita=new Date(document.getElementById("fecha").value);
+            const dias=["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+            
+            fechita.setDate(fechita.getDate()+30);
+            
+            var dia=dias[fechita.getDay()];
+
+            document.getElementById("demo").innerHTML="Hoy es "+dia;
+        }
+    </script>
+    
+</body>
+</html>

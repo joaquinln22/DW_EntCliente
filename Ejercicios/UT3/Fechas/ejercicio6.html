@@ -16,12 +16,12 @@
     <script>
         const fecha=new Date();
         const navidad=new Date("2024-12-25");
-        var d_navidad=navidad.getTime()-fecha.getTime();
-        d_navidad=d_navidad/1000;
-        d_navidad=d_navidad/60;
-        d_navidad=d_navidad/60;
-        d_navidad=d_navidad/24;
-        document.getElementById("demo").innerHTML="Quedan "+d_navidad+" días para navidad."
+        var milis=navidad.getTime()-fecha.getTime();
+        var sec=milis/1000;
+        var min=sec/60;
+        var hora=min/60;
+        var d_navidad=hora/24;
+        document.getElementById("demo").innerHTML="Quedan "+parseInt(d_navidad)+" días para navidad."
     </script>
     
 </body>

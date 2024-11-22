@@ -16,12 +16,12 @@
     <script>
         function esFechaValida(fecha){
             var fechita=new Date(fecha);
-            return !isNaN(fecha.getTime());
+            return !isNaN(fechita.getTime());
         }
         function validarFecha(){
-            var fecha=document.getElementById("fecha").value;
-            if(esFechaValida(fecha)){
-                document.getElementById("demo").innerHTML="La fecha introducida es valida "+fecha;
+            var fechita=document.getElementById("fecha").value;
+            if(esFechaValida(fechita)){
+                document.getElementById("demo").innerHTML="La fecha introducida es valida "+fechita;
             }else{
                 document.getElementById("demo").innerHTML="La fecha introducida NO es valida";
             }

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 7</title>
+</head>
+<body>
+    <h3>Enunciado ejercicio</h3>
+    <p>Desarrolla una función que tome una fecha de nacimiento como entrada y calcule la edad actual de la persona en años, meses y días. Muestra el resultado de una manera clara y legible.</p><br>
+    Fecha de nacimiento: <input type="date" id="nacimiento">
+    <button onclick="calcularEdad()">Edad</button>
+    <p id="demo"></p>
+
+    <script>
+        function calcularEdad(){
+            const birth=new Date(document.getElementById("nacimiento").value);
+            const actual=new Date();
+
+            var anios=actual.getFullYear()-birth.getFullYear();
+            var meses=actual.getMonth()-birth.getMonth();
+            var dias=actual.getDate()-birth.getDate();
+
+            // Comprobar 
+            if(dias<0){
+                meses--;
+                dias +=new Date().getDate;
+            }
+
+            if(meses<0){
+                anios--;
+                meses +=12;
+            }
+
+            document.getElementById("demo").innerHTML="Tienes "+anios+" años, "+meses+" meses y "+dias+" dias.";
+        }
+    </script>
+    
+</body>
+</html>
