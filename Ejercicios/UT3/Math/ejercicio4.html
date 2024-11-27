@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4</title>
+</head>
+<body>
+    <h3>Enunciado ejercicio</h3>
+    <p>Escribe una función llamada maximoYMinimo que reciba un array de 6 números.</p>
+    <p>Usando el objeto Math, encuentra y devuelve el número más grande y el más pequeño del array.</p>
+    <p>Prueba la función con un array de ejemplo, como [45, 2, 89, 32, -10, 7].</p>
+    <br>
+    
+    <label for="num">Introduce 6 números, separados por comas:</label>
+    <input type="text" name="num" id="num">
+    <button onclick="maximoYMinimo()">Calcular</button>
+    
+    <p id="demo"></p>
+
+    <script>
+        function maximoYMinimo(){
+            // Parseamos el array con la función map(Number), un array no acepta parseInt()
+            let numeros=document.getElementById("num").value.split(",").map(Number);
+            if(numeros.length==6){
+                let result1=Math.min(...numeros);
+                let result2=Math.max(...numeros);
+                document.getElementById("demo").innerHTML="Menor: "+result1+"<br>Mayor: "+result2;
+            }else{
+                alert("Tamaño del array incorrecto, supera los 6 números.")
+            }
+        }
+    </script>
+</body>
+</html>

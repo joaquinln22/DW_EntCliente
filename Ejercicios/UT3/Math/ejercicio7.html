@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 7</title>
+</head>
+<body>
+    <h3>Enunciado ejercicio</h3>
+    <p>Desarrolla una función que acepte un número entero como entrada y devuelva la cantidad de dígitos que tiene. Utiliza el objeto Math para realizar el cálculo.</p>
+    <br>
+    
+    <label for="num">Introduce un número:</label>
+    <input type="number" name="num" id="num">
+    <button onclick="calcular()">Calcular</button>
+    
+    <p id="demo"></p>
+
+    <script>
+        function calcular() {
+            var num = parseInt(document.getElementById("num").value);
+            var digitos=Math.abs(num).toString().length;
+            document.getElementById("demo").innerHTML = "Número de digitos del número introducido: " + digitos;
+        }
+    </script>
+</body>
+</html>

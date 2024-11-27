@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+</head>
+<body>
+    <h3>Enunciado ejercicio</h3>
+    <p>Crea un programa que haga lo siguiente:</p>
+    <p>&nbsp;&nbsp;&nbsp;Pide al usuario un número base y un exponente (usa un input).</p>
+    <p>&nbsp;&nbsp;&nbsp;Calcula la potencia y muestra el resultado en la consola.</p>
+    <p>&nbsp;&nbsp;&nbsp;Calcula la raíz cuadrada del número y muestra el resultado en la pantalla.</p>
+    <br>
+    
+    <label for="base">Introduce una base: </label>
+    <input type="number" name="base" id="base">
+    <label for="exp">Introduce un exponente: </label>
+    <input type="number" name="exp" id="exp">
+    <button onclick="mostrar()">Calcular</button>
+    
+    <p id="demo"></p>
+
+    <script>
+        function potencia(base, exp){
+            return Math.pow(base, exp);
+        }
+        function raiz(base){
+            return Math.sqrt(base);
+        }
+        function mostrar(){
+            let base = parseInt(document.getElementById("base").value); 
+            let exp = parseInt(document.getElementById("exp").value);
+            let result1=potencia(base, exp);
+            let result2=raiz(base);
+
+            document.getElementById("demo").innerHTML="Potencia: "+result1+"<br>Raíz cuadrada:"+result2;
+        }
+    </script>
+    
+</body>
+</html>

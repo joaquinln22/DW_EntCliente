@@ -13,7 +13,7 @@
     <p>&nbsp;&nbsp;- El número redondeado hacia arriba.</p>
     <p>&nbsp;&nbsp;- El número redondeado hacia abajo.</p><br>
     <label for="numero">Introduce un número decimal</label>
-    <input type="number" name="numero" id="numero">
+    <input type="number" step="0.01" name="numero" id="numero">
     <button onclick="mostrar()">Calcular</button>
     
     <p id="demo"></p>
@@ -21,6 +21,10 @@
     <script>
         function mostrar(){
             let numerito=parseFloat(document.getElementById("numero").value);
+            var cerca=Math.round(numerito);
+            var arriba=Math.ceil(numerito);
+            var abajo=Math.floor(numerito);
+            document.getElementById("demo").innerHTML="Redondeado al entero más cercano: "+cerca+"<br>"+"Redondeado hacia arriba: "+arriba+"<br>"+"Redondeado hacia abajo: "+abajo;
         }
     </script>
     

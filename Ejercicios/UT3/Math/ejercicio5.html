@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 5</title>
+</head>
+<body>
+    <h3>Enunciado ejercicio</h3>
+    <p>Pida al usuario un ángulo en grados (usa un input).</p>
+    <p>Convierta el ángulo a radianes.</p>
+    <p>Calcule y muestre en pantalla el seno, coseno y tangente del ángulo usando Math.sin, Math.cos y Math.tan.</p>
+    <p>Pista: Para convertir grados a radianes, usa la fórmula radianes = grados * (Math.PI / 180).</p>
+    <br>
+    
+    <label for="grados">Introduce los grados del ángulo:</label>
+    <input type="number" name="grados" id="grados">
+    <button onclick="convertir()">Convertir y mostrar</button>
+    
+    <p id="demo"></p>
+
+    <script>
+        function convertir(){
+            let radianes=(parseFloat(document.getElementById("grados").value))*(Math.PI/180);
+            let seno=Math.sin(radianes);
+            let coseno=Math.cos(radianes);
+            let tangente=Math.tan(radianes);
+
+            document.getElementById("demo").innerHTML="Radianes: "+radianes+"<br>Seno: "+seno+"<br>Coseno: "+coseno+"<br>Tangente: "+tangente;
+        }
+    </script>
+</body>
+</html>
