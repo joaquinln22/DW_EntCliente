@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Extra</title>
+</head>
+<body>
+    <h3>Enunciado ejercicio</h3>
+    <p>Dos botones, capturar datos y detener captura.</p>
+    <p>Capturar datos: Mostrar por pantalla la fecha si los segundos son pares. Cada 3 segundos.</p>
+    <p>Detener captura: Muestra la suma de los segundos impresos.</p>
+    
+    <button id="capturar" onclick="capturar()">Capturar datos</button>
+    <button id="detener" onclick="detener()">Detener captura</button>
+    
+    <p id="resultado"></p>
+    <p id="demo"></p>
+
+    <script>
+        var contador=0;
+        var idTomaDatos;
+
+        function detener(){
+            clearInterval(idTomaDatos);
+            document.getElementById("capturar").disabled=false;
+            document.getElementById("detener").disabled=true;
+            document.getElementById("demo").innerHTML="El número de horas impresas es "+Math.sqrt(contador).toFixed(2);
+            contador=0;
+
+        }
+        
+        function TomaDatos(){
+            idTomaDatos=setInterval(capturar, 3000);
+            document.getElementById("capturar").disabled=true;
+            document.getElementById("detener").disabled=false;
+        }
+
+        function capturar(){
+            var segActuales;
+            var fecha=new Date();
+            var h=fecha.getHours();
+            var m=fecha.getMinutes();
+            var s=fecha.getSeconds();
+            var hora=h+":"+m+":"+s;
+            segActuales=fecha.getSeconds();
+            if(segActuales%2==0){
+                document.getElementById("resultado").innerHTML+="La hora es "+hora+" <br>";
+                contador++;
+            }
+        }
+    </script>
+    
+</body>
+</html>
