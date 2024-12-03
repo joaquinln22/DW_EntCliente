@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+</head>
+<body>
+    <button onclick="iniciar()">Iniciar Captura</button>
+    <button onclick="detener()">Detener Captura</button>
+    <p id="demo"></p>
+
+    <script>
+        let intervalId;
+        let contador = 0;
+
+        function generarHora(){
+            const fecha = new Date();
+            const sec = fecha.getSeconds();
+            if(sec%2==0){
+               const horasGeneradas = document.getElementById("demo");
+               horasGeneradas.innerHTML += "Hora: " + fecha.toLocaleTimeString()+ "<br>";
+               contador++;
+            }
+            
+        }
+
+        function iniciar(){
+            // Iniciar la generación cada 3 segundos
+            intervalId = setInterval(function() {
+                generarHora();
+            }, 3000);
+        }
+
+        function detener() {
+            // Detener la generación
+            clearInterval(intervalId);
+            const horasGeneradas = document.getElementById("demo");
+            horasGeneradas.innerHTML += "<b>Captura detenida. Total capturas: " + contador + ".</b><br>";
+        }
+    </script>
+</body>
+</html>

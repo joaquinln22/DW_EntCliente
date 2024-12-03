@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+</head>
+<body>
+    <label for="fecha">Introduce la fecha : </label>
+    <input type="date" name="fecha" id="fecha">
+    <button onclick="calcular()">Calcular Día de la semana</button>
+
+    <p id="demo"></p>
+
+    <script>
+        function calcular(){
+           const fecha=new Date(document.getElementById("fecha").value);
+           var anio=fecha.getFullYear();
+           var mes=fecha.getMonth()+1;
+           var dia=fecha.getDate();
+           var fechita=anio+"-"+mes+"-"+dia;
+           var d=fecha.getDay();
+           const d_semana=["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+           d=d_semana[d];
+
+
+           document.getElementById("demo").innerHTML="El día de la semana para: "+fechita+" fue un "+d;
+        }
+        
+
+    </script>
+</body>
+</html>

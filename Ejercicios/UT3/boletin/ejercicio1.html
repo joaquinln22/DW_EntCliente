@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+</head>
+<body>
+    <h1>Calculadora de Tiempo Transcurrido</h1>
+    <label for="fecha">Introduce una fecha (mes @ dia @ año): </label>
+    <input type="text" name="fecha" id="fecha">
+    <button onclick="calcular()">Calcular Tiempo Transcurrido</button>
+
+    <p id="demo"></p>
+
+    <script>
+        function calcular(){
+           const actual=new Date();
+           var a=actual.getTime();
+           const fecha=new Date(document.getElementById("fecha").value);
+           var f=fecha.getTime();
+           
+           var mili=a-f;
+           var sec=mili/1000;
+           var min=sec/60;
+           var hor=min/60;
+           var dias=hor/24;
+           var sem=dias/7;
+           var mes=sem/4;
+           var anio=mes/12;
+
+           document.getElementById("demo").innerHTML=actual+"<br>"+fecha+"<h1>Resultado</h1>Minutos: "+Math.floor(min)+"<br>Horas: "+Math.floor(hor)+"<br>Días: "+Math.floor(dias)+"<br>Semanas: "+Math.floor(sem)+"<br>Meses(aprox): "+Math.floor(mes)+"<br>Años(aprox): "+Math.floor(anio);
+        }
+        
+
+    </script>
+</body>
+</html>
