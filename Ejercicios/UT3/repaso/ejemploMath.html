@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Enunciado ejercicio</h3>
+    <p>Diseña una página web que permita la introducción de dos números mediante dos campos de entrada (input). La página deberá incluir un botón que, al ser presionado, generará 20 números enteros aleatorios dentro de un rango especificado, el cual estará determinado por los dos números ingresados.</p>
+    <p>Asegúrate de realizar las siguientes verificaciones:</p>
+    <p>&nbsp;&nbsp;&nbsp;- Comprobar que ambos números ingresados son válidos y no están vacíos.</p>
+    <p>&nbsp;&nbsp;&nbsp;- Verificar que el primer número sea menor que el segundo; en caso contrario, mostrar una alerta indicando que el primer número debe ser menor que el segundo.</p>
+    <p>Los números generados deberán mostrarse directamente en la página web, y no en la consola del navegador. Cada vez que se presione el botón, la página se deberá actualizar con una nueva serie de 20 números aleatorios dentro del rango establecido y borrar los anteriores números generados.</p>
+    <br>
+    
+    <label for="num1">Introduce un número: </label>
+    <input type="number" name="num1" id="num1">
+    <label for="num2">Introduce otro número: </label>
+    <input type="number" name="num2" id="num2">
+    <button onclick="generar()">Generar</button>
+
+    <p id="demo"></p>
+
+    <script>
+        function generar(){
+            var min=parseInt(document.getElementById("num1").value);
+            var max=parseInt(document.getElementById("num2").value);
+
+            if(min=="" || max==""){
+                alert("Debes introducir dos números válidos");
+            }else if(min>=max){
+                alert("El segundo número debe ser mayor que el primero");
+            }else{
+                var numeros=[];
+                for(var i=1; i<=20; i++){
+                    var numAleatorio=Math.floor(Math.random()*((max+1)-min))+min;
+                    numeros.push(numAleatorio);
+                }
+            }
+           document.getElementById("demo").innerHTML="Números generados aleatoriamente: "+numeros.join(", "); 
+        }
+    </script>
+
+
+</body>
+</html>
