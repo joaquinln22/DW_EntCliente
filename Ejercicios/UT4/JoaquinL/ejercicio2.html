@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+</head>
+<body>
+    <label>Introduce los precios de los ordenadores: </label>
+    <input type="text" id="precios">
+    <button onclick="mostrar()">Calcular promedio</button>
+    <p id="demo"></p>
+    <script>
+        function mostrar(){
+            var precios=document.getElementById("precios").value;
+            if(precios==""){
+                document.getElementById("demo").innerHTML="No se ingresaron precios de ordenadores.";
+            }else{
+               var array=precios.split(" ");
+                calcular(array); 
+            }    
+        }
+        function calcular(precios){
+                var suma=0;
+                var precio=0;
+                for(var i=0; i<precios.length; i++){
+                    precio=parseFloat(precios[i]);
+                    suma+=precio;
+                }
+                if(isNaN(suma)){
+                    document.getElementById("demo").innerHTML="Error: Uno de los precios no es válido.";
+                }else{
+                   document.getElementById("demo").innerHTML=suma/precios.length+"€ de promedio."; 
+                }    
+        }
+    </script>
+</body>
+</html>

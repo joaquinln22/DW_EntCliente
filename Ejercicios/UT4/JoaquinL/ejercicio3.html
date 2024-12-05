@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+</head>
+<body>
+    <button onclick="quitarUlti()">Quitar último</button><br><br>
+    <input type="text" id="num1">
+    <button onclick="añadirUlti()">Añadir al final</button><br><br>
+    <button onclick="quitarPrim()">Quitar primero</button><br><br>
+    <input type="text" id="num2">
+    <button onclick="añadirPrim()">Añadir al principio</button>
+    <p id="demo"></p>
+    <label>Array cambiado: </label>
+    <span id="cambio"></span>
+    <script>
+        var array=[4, 6, 2, 1, 8];
+        document.getElementById("demo").innerHTML="Array original: "+array;
+        function quitarUlti(){
+            var nums=array.pop();
+            document.getElementById("cambio").innerHTML=array;
+        }
+        function añadirUlti(){
+            var nums=array.push(document.getElementById("num1").value);
+            document.getElementById("cambio").innerHTML=array;
+        }
+        function quitarPrim(){
+            var nums=array.shift();
+            document.getElementById("cambio").innerHTML=array;
+        }
+        function añadirPrim(){
+            var nums=array.unshift(document.getElementById("num2").value);
+            document.getElementById("cambio").innerHTML=array;
+        }
+    </script>
+</body>
+</html>

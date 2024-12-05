@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+</head>
+<body>
+    <p id="demo"></p>
+    <script>
+        const alumno = {
+            nombre:"Joaquín",
+            edad:22,
+            notas: [5, 8, 7],
+            calcularPromedio: function(){
+                var promedio=0;
+                var suma=0;
+                for(var i=0; i<notas.length; i++){
+                    suma+=notas[i];
+                }
+                promedio=suma/notas.length;
+                return "El alumno ${nombre} tiene un promedio de ${promedio}";
+            },
+            evaluarAlumno: function(){
+                if(promedio>=5){
+                    return "El alumno ha aprobado.";
+                }else{
+                    return "El alumno a suspendido";
+                }
+            }
+            
+        };
+        document.getElementById("demo").innerHTML = alumno.calcularPromedio()+"<br>"+alumno.evaluarAlumno();
+    </script>
+</body>
+</html>
