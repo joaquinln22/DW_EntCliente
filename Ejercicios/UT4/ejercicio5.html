@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 5</title>
+</head>
+<body>
+    <label for="">Introduce una cadena de texto: </label>
+    <input type="text" id="texto">
+    <label for=""> Introduce una clave de cifrado: </label>
+    <input type="text" id="clave">
+    <button onclick="mostrar()">Cifrar</button>
+    <button onclick="limpiar()">Reset</button>
+    <p id="demo"></p>
+    <script>
+        function cifrar(letra, clave){
+            var letrita=letra.toUpperCase();
+            var letracifrada=letrita.charCodeAt();
+            if(letracifrada>=65 && letracifrada<=90){
+                letracifrada+=clave;
+                if(letracifrada>90){
+                    letracifrada-=26;
+                }
+            }else{
+                letracifrada=letrita.charCodeAt();
+            }
+            var resultado=String.fromCharCode(letracifrada);
+            document.getElementById("demo").innerHTML+=resultado;
+        }
+        function mostrar(){
+            var texto=document.getElementById("texto").value;
+            var clave=parseInt(document.getElementById("clave").value);
+            for(var i=0; i<texto.length; i++){
+               cifrar(texto[i], clave); 
+            }
+        }
+        function limpiar(){
+            document.getElementById("demo").innerHTML="";
+        }
+    </script>
+</body>
+</html>

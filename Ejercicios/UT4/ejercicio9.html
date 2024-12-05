@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 9</title>
+</head>
+<body>
+    <button id="boton" onclick="saludar()">Presentarme</button>
+    <p id="demo"></p>
+    <script>
+        class Persona{
+            constructor(nombre, edad){
+                this.nombre=nombre;
+                this.edad=edad;
+            }
+            
+        }
+        const acciones={
+            presentarse:function(){
+                document.getElementById("demo").innerHTML+=`Hola mi nombre es ${this.nombre} tengo ${this.edad} <br>`;
+            }
+        }
+        var persona1=new Persona("Joaquin", 22);
+        var persona2=new Persona("Alex", 22);
+        var persona3=new Persona("María", 22);
+        function saludar(){
+            acciones.presentarse.call(persona1);
+            acciones.presentarse.call(persona2);
+            acciones.presentarse.call(persona3);
+        }
+
+    </script>
+</body>
+</html>

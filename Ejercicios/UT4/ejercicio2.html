@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+</head>
+<body>
+    <label for="">Introduce una frase: </label>
+    <input type="text" id="frase" required>
+    <label for=""> Palabra a buscar: </label>
+    <input type="text" id="palabra" required>
+    <button onclick="buscar()">Buscar</button><br><br>
+    <span id="demo"></span>
+
+    <script>
+        
+        function buscar(){
+            var conta=0;
+            var sentence=document.getElementById("frase").value.toLowerCase();
+            var array=sentence.split(" ");
+            var word=document.getElementById("palabra").value.toLowerCase();
+            for(var i=0; i<=array.length; i++){
+                if(array[i]===word){
+                    conta++;
+                }
+            }
+            document.getElementById("demo").innerHTML="Numero de veces que aparece: "+conta;  
+        }
+        
+    </script>
+</body>
+</html>

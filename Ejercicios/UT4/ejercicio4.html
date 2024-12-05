@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4</title>
+</head>
+<body>
+    <label for="">Introduce varios numeros para sumar: </label>
+    <input type="text" id="numeros" required>
+    <button onclick="sumar()">Sumar</button>
+    <p id="demo"></p>
+    <script>
+        function sumar(){
+            var nums=document.getElementById("numeros").value;
+            var array=nums.split(" ");
+            for(var i=0; i<array.length; i++){
+                array.splice(i, 1, parseInt(array[i]));
+            }
+            function sum(total, value){
+                return total+value;
+            }
+            var suma=array.reduce(sum);
+            document.getElementById("demo").innerHTML=suma;  
+        }
+        
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 8</title>
+</head>
+<body>
+    <button onclick="mostrarTodo()">Todos los pokemon</button>
+    <button onclick="fuego()">Tipo fuego</button>
+    <p id="demo"></p>
+    <script>
+        function mostrarTodo(){
+            var resultado="";
+            for(let Pokemon of todos){
+                resultado+=Pokemon.mostrar();
+            }
+            document.getElementById("demo").innerHTML=resultado;
+        }
+        function fuego(){
+            var resultado="";
+            for(let Pokemon of todos){
+                if(Pokemon.tipo=="Fuego"){
+                    resultado+=Pokemon.mostrar();
+                }
+            }
+            document.getElementById("demo").innerHTML=resultado;
+        }
+        class Pokemon{
+            constructor(nombre, tipo, foto){
+                this.nombre=nombre;
+                this.tipo=tipo;
+                this.foto=foto;
+            }
+            mostrar(){
+                return `<div><h2>${this.nombre}</h2><p>${this.tipo}</p><img src=${this.foto} style="width: 150px; height: 150px;"></div>`;
+            }
+            
+        }
+        var poke1=new Pokemon("Picachu", "Eléctrico", "images/025.png");
+        var poke2=new Pokemon("Charmander", "Fuego", "images/004.png");
+        var poke3=new Pokemon("Bulbasaur", "Planta", "images/001.png");
+        var poke4=new Pokemon("Kyurem", "Dragón Hielo", "images/646.png");
+        var poke5=new Pokemon("Zekrom", "Dragón Eléctrico", "images/644.png");
+        var todos=[poke1, poke2, poke3, poke4, poke5];
+    </script>
+</body>
+</html>

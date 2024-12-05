@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+</head>
+<body>
+    <label for="">Introduce números: </label>
+    <input type="text" id="numeros" required>
+    <button onclick="filtrarPares()">Pares</button><br>
+    <span id="demo"></span>
+    <script>
+        function filtrarPares(){
+            var nums=document.getElementById("numeros").value;
+            var array=nums.split(" ");
+            var pares=[];
+            for(var i=0; i<=array.length; i++){
+                if(array[i]%2===0){
+                    pares.push(array[i]);
+                }
+            }
+            document.getElementById("demo").innerHTML="Números pares: "+pares.join(", ");
+        }
+    </script>
+</body>
+</html>

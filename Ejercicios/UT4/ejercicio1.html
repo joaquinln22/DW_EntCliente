@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+</head>
+<body>
+    <label for="nums"><strong>El valor del array inicial es:</strong></label>
+    <p id="demo"></p>
+    <label><strong>Despues de los cambios el array tiene los siguientes valores:</strong><br></label>
+    <p id="cambios"></p>
+    <label><strong>Array cortado</strong><br><br></label>
+    <button onclick="cortarUltimo()">Quitar último valor</button><br><br>
+    <label for="">Introduce un número al final </label>
+    <input type="number" id="añadido" style="width: 50px;">
+    <button onclick="añadirUltimo()">Añadir número al final</button><br><br>
+    <button onclick="cortarPrimero()">Quitar primer elemento</button><br><br>
+    <label for="">Introduce un número al principio </label>
+    <input type="number" id="añadido2">
+    <button onclick="añadirPrimero()">Añadir valor al principio</button><br><br>
+    <button onclick="sustituye()">Sustituimos el 2 por el 15</button><br><br>
+    <button onclick="añadirDos()">Añadimos el 23 y 30</button><br><br>
+    <button onclick="tresUltimos()">Tres últimos elementos</button><br><br>
+    <button onclick="ordenAsc()">Ordenar ascendente</button><br><br>
+    <button onclick="ordenDesc()">Ordenar descendente</button>
+
+    <script>
+        var nums=[4, 6, 2, 1, 8];
+        document.getElementById("demo").innerHTML=nums;
+        function cortarUltimo(){
+            nums.pop();
+            document.getElementById("cambios").innerHTML=nums;
+        }
+        function añadirUltimo(){
+            nums.push(document.getElementById("añadido").value);
+            document.getElementById("cambios").innerHTML=nums;
+        }
+        function cortarPrimero(){
+            nums.shift();
+            document.getElementById("cambios").innerHTML=nums;
+        }
+        function añadirPrimero(){
+            nums.unshift(document.getElementById("añadido2").value);
+            document.getElementById("cambios").innerHTML=nums;
+        }
+        function sustituye(){
+            nums.splice(2, 1, 15);
+            document.getElementById("cambios").innerHTML=nums;
+        }
+        function añadirDos(){
+            nums.splice(nums.length, 0, 23, 30);
+            document.getElementById("cambios").innerHTML=nums;
+        }
+        function tresUltimos(){
+            nums.slice(nums.length-3);
+            document.getElementById("cambios").innerHTML=nums;
+        }
+        function ordenAsc(){
+            nums.sort(function(a, b){return a-b});
+            document.getElementById("cambios").innerHTML=nums;
+        }
+        function ordenDesc(){
+            nums.sort(function(a, b){return b-a});
+            document.getElementById("cambios").innerHTML=nums;
+        }
+    </script>
+</body>
+</html>
