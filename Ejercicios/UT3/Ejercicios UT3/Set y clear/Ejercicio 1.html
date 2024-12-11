@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador Incremental</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Contador Incremental</h1>
+
+    <input type="text" id="contador" disabled>
+    <br>
+
+    <button onclick="iniciarContador()">Iniciar</button>
+    <button onclick="detenerContador()">Detener</button>
+    <button onclick="retomarContador()">Retomar</button>
+
+    <script>
+        let contador = 0;
+        let intervalId;
+
+        function iniciarContador() {
+            // Iniciar el contador incrementando cada segundo
+            intervalId = setInterval(function() {
+                document.getElementById('contador').value = contador++;
+            }, 1000);
+        }
+
+        function detenerContador() {
+            // Detener el contador
+            clearInterval(intervalId);
+        }
+
+        function retomarContador() {
+            // Reiniciar el contador desde el valor actual
+            detenerContador(); // Detener el contador actual
+            iniciarContador(); // Iniciar el contador desde el valor actual
+        }
+    </script>
+</body>
+</html>

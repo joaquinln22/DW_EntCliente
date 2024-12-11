@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repaso</title>
+</head>
+<body>
+    <button onclick="saludo()">Saludame</button>
+    <p id="demo"></p>
+    <script>
+        function saludo(){
+            obtenerSaludo("Joaquín", 22);
+            obtenerSaludo("Alex");
+            obtenerSaludo();
+        }
+
+        function obtenerSaludo(name="Desconocido", age="23"){
+            document.getElementById("demo").innerHTML+="Saludo de "+name+" cuya edad es "+age+"<br>";
+        }
+    </script>
+</body>
+</html>

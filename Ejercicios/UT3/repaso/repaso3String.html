@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repaso</title>
+</head>
+<body>
+    <h1>Busqueda y sustitución</h1>
+    <label for="texto">Texto: </label>
+    <textarea name="texto" id="texto" placeholder="Introduce texto..."></textarea>
+    <label for="palabra">Palabra clave: </label>
+    <input type="text" id="palabra" placeholder="Palabra a buscar">
+    <label for="sustituta">Palabra a sustituir: </label>
+    <input type="text" id="sustituta" placeholder="Palabra a sustituir">
+    
+    <button onclick="buscarSustituir()">Buscar y sustituir</button>
+
+    <h2>Resultado: </h2>
+    <textarea id="resultado" readonly></textarea>
+    <script>
+        function buscarSustituir(){
+            // Obtener los valores del texto, palabra clave y palabra sustituta
+            var texto=document.getElementById("texto").value;
+            var palabra=document.getElementById("palabra").value;
+            var sustituta=document.getElementById("sustituta").value;
+
+            // Realizar la búsqueda y sustitución (case-sensitive)
+            var resultado=realizarSustitución(texto, palabra, sustituta);
+
+            // Mostrar el resultado en el área correspondiente
+            document.getElementById("resultado").innerHTML=resultado;
+        }
+        function realizarSustitución(texto, palabra, sustituta){
+            // Dividir el texto en un array de palabras usando un espacio como separador
+            var arrayTexto=texto.split(" ");
+
+            // Iterar sobre cada palabra y sustituir si es igual a la palabra clave
+            for(var i=0; i<arrayTexto.lenght; i++){
+                if(arrayTexto[i]===palabra){
+                    arrayTexto[i]=sustituta;
+                }
+            }
+
+            // Unir las palabras de nuevo en un texto
+            return arrayTexto.join(" ");
+        }
+    </script>
+</body>
+</html>

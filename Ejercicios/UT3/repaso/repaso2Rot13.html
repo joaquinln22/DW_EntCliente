@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repaso</title>
+</head>
+<body>
+    <h1>Rot13</h1>
+    <label for="letra">Introduce una letra: </label>
+    <input type="text" id="letra" maxlength="1">
+    <button onclick="cifrar()">Cifrar</button>
+    
+    <div id="resultado"></div>
+    <script>
+        function cifrar(){
+            // Obtener la letra introducida
+            var letra=document.getElementById("letra").value;
+            
+            // Realizar el cifrado ROT13 de la letra
+            var resultadoRot13=rot13(letra);
+
+            // Mostrar el resultado
+            mostrar(resultadoRot13);
+
+            // Limpiar el campo de entrada
+            document.getElementById("letra").value="";
+        }
+        function rot13(letra){
+            // Obetener codigo ascii de la letra
+            var codigo=letra.charCodeAt(0);
+
+            // Verificar si la letra está en el rango A-Z
+            if(codigo>=65 && codigo<=90){
+                // Aplicar el cifrado ROT13
+                return String.fromCharCode(((codigo-65+13)%26)+65);
+            }else{
+                //Si no es una letra del alfabeto, devolver la misma letra
+                return letra;
+            }
+        }
+        function mostrar(resultadoRot13){
+            var result=document.getElementById("resultado");
+
+            // Concatenar el resultado al elemento
+            result.textContent+=resultadoRot13;
+        }
+    </script>
+</body>
+</html>

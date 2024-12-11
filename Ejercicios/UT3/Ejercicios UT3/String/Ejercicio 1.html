@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contador de Preposiciones</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 50px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Contador de Preposiciones</h1>
+
+  <label for="texto">Ingresa un texto:</label><br>
+  <textarea id="texto" rows="4" cols="50"></textarea><br>
+
+  <button onclick="contarPreposiciones()">Contar Preposiciones</button>
+
+  <p id="resultado"></p>
+
+  <script>
+    function esPreposicion(palabra) {
+      // Lista de preposiciones en español
+      var preposiciones = ['a', 'ante', 'bajo', 'cabe', 'con', 'contra', 'de', 'desde', 'en', 'entre', 'hacia', 'hasta', 'para', 'por', 'según', 'sin', 'so', 'sobre', 'tras'];
+
+      // Convertir la palabra a minúsculas para hacer la comparación sin distinción de mayúsculas/minúsculas
+      var palabraLowerCase = palabra.toLowerCase();
+
+      // Verificar si la palabra es una preposición
+      return preposiciones.includes(palabraLowerCase);
+    }
+
+    function contarPreposiciones() {
+      // Obtener el contenido del área de texto y dividirlo en palabras
+      var palabras = document.getElementById('texto').value.split(/\s+/);
+
+      // Inicializar el contador de preposiciones
+      var contador = 0;
+      var dosletras = 0;
+      var tresletras = 0;
+      var palindromas=0;
+      var listaPalindromas=[];
+
+      // Iterar sobre cada palabra y verificar si es una preposición
+      for (var i = 0; i < palabras.length; i++) {
+        if (palabras[i].length==2){
+          dosletras++
+        }
+        else if (palabras[i].length==3){
+          tresletras++
+        }
+
+        if (palabras[i]==palabras[i].split("").reverse().join("")&&palabras[i].length>1) {
+          palindromas++;
+          listaPalindromas.push(palabras[i]);
+        }
+
+        if (esPreposicion(palabras[i])) {
+          contador++;
+        }
+      }
+
+      // Mostrar el resultado
+      document.getElementById('resultado').innerHTML = 'Número de preposiciones: ' + contador;
+      document.getElementById('resultado').innerHTML += '<br>Número de palabras totales: ' + palabras.length;
+      document.getElementById('resultado').innerHTML += '<br>Número de palabras con dos letras: ' + dosletras;
+      document.getElementById('resultado').innerHTML += '<br>Número de palabras con tres letras: ' + tresletras;
+      document.getElementById('resultado').innerHTML += '<br>Número de palabras palindromas: ' + palindromas;
+      document.getElementById('resultado').innerHTML += '<br>Lista de palindromos: ' + listaPalindromas;
+    }
+  </script>
+
+</body>
+</html>

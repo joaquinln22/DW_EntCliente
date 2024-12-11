@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cifrado ROT13</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #resultado {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cifrado ROT13</h1>
+    
+    <label for="letra">Introduce una letra:</label>
+    <input type="text" id="letra" maxlength="1">
+    <button onclick="cifrar()">Cifrar</button>
+
+    <div id="resultado"></div>
+
+    <script>
+        function cifrar() {
+            // Obtener la letra introducida
+            let letra = document.getElementById('letra').value.toUpperCase();
+
+			// Realizar el cifrado ROT13 de la letra
+			let resultadoCifrado = rot13(letra);
+
+			// Mostrar el resultado
+			mostrarResultado(resultadoCifrado);
+
+			// Limpiar el campo de entrada
+			document.getElementById('letra').value = '';
+            
+        }
+
+        function rot13(letra) {
+            let codigo = letra.charCodeAt(0);
+
+            // Verificar si la letra está en el rango A-Z
+            if (codigo >= 65 && codigo <= 90) {
+                // Aplicar el cifrado ROT13
+                return String.fromCharCode(((codigo - 65 + 13) % 26) + 65);
+            } else {
+                // Si no es una letra del alfabeto, devolver la misma letra
+                return letra;
+            }
+        }
+
+        function mostrarResultado(resultado) {
+            // Obtener el elemento de resultado
+            let resultadoElemento = document.getElementById('resultado');
+
+            // Concatenar el resultado al contenido existente
+            resultadoElemento.textContent += resultado;
+        }
+    </script>
+</body>
+</html>

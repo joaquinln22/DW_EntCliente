@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Búsqueda y Sustitución</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Búsqueda y Sustitución</h1>
+
+    <label for="texto">Texto:</label>
+    <textarea id="texto" placeholder="Introduce tu texto aquí"></textarea>
+
+    <label for="palabraClave">Palabra Clave:</label>
+    <input type="text" id="palabraClave" placeholder="Palabra clave a buscar">
+
+    <label for="palabraSustituta">Palabra Sustituta:</label>
+    <input type="text" id="palabraSustituta" placeholder="Palabra con la que sustituir">
+
+    <button onclick="realizarBusquedaYSustitucion()">Buscar y Sustituir</button>
+
+    <h2>Resultado:</h2>
+    <textarea id="resultado" readonly></textarea>
+
+    <script>
+        function realizarBusquedaYSustitucion() {
+            // Obtener los valores del texto, palabra clave y palabra sustituta
+            let texto = document.getElementById('texto').value;
+            let palabraClave = document.getElementById('palabraClave').value;
+            let palabraSustituta = document.getElementById('palabraSustituta').value;
+
+            // Realizar la búsqueda y sustitución (case-sensitive)
+            let resultado = buscarYSustituir(texto, palabraClave, palabraSustituta);
+
+            // Mostrar el resultado en el área correspondiente
+            document.getElementById('resultado').value = resultado;
+        }
+
+        function buscarYSustituir(texto, palabraClave, palabraSustituta) {
+			// Dividir el texto en un array de palabras usando un espacio como separador
+			let palabras = texto.split(' ');
+
+			// Iterar sobre cada palabra y sustituir si es igual a la palabra clave
+			for (let i = 0; i < palabras.length; i++) {
+				if (palabras[i] === palabraClave) {
+					palabras[i] = palabraSustituta;
+				}
+			}
+
+			// Unir las palabras de nuevo en un texto
+			return palabras.join(' ');
+		}
+
+    </script>
+</body>
+</html>

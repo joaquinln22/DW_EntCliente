@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Números Aleatorios</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        #numerosGenerados {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        #detenerBtn {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Generador de Números Aleatorios</h1>
+
+    <button onclick="iniciarGeneracion()">Generar Número Aleatorio</button>
+    <div id="numerosGenerados"></div>
+
+    <script>
+        let intervalId;
+        let segundosTranscurridos = 0;
+
+        function generarNumeroAleatorio() {
+            const numeroAleatorio = Math.floor(Math.random() * 1000);
+            const numerosGeneradosElement = document.getElementById('numerosGenerados');
+            numerosGeneradosElement.innerHTML += "Número Generado: " + numeroAleatorio + "<br>";
+        }
+
+        function iniciarGeneracion() {
+            // Reiniciar el contador de segundos
+            segundosTranscurridos = 0;
+
+            // Iniciar la generación de números aleatorios cada segundo
+            intervalId = setInterval(function() {
+                generarNumeroAleatorio();
+
+                // Verificar si han pasado 10 segundos
+                segundosTranscurridos++;
+                if (segundosTranscurridos >= 10) {
+                    detenerGeneracion();
+                }
+            }, 1000);
+        }
+
+        function detenerGeneracion() {
+            // Detener la generación de números aleatorios
+            clearInterval(intervalId);
+
+           
+        }
+    </script>
+</body>
+</html>

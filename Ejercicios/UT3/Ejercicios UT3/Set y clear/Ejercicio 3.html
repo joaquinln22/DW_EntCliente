@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Misión Cósmica</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        #circulo {
+            width: 200px;
+            height: 200px;
+            background-color: #3498db;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        #ranking {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        #iniciarBtn, #abortarBtn {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Misión Cósmica</h1>
+
+    <div id="circulo">
+        <span id="temporizador">5.000</span>
+    </div>
+
+    <button id="iniciarBtn" onclick="iniciarMision()">Iniciar Misión</button>
+    <button id="abortarBtn" onclick="abortarMision()" disabled>Abortar Misión</button>
+
+    <div id="ranking"></div>
+
+    <script>
+        // Variable que almacena el tiempo restante en milisegundos
+        let tiempoRestante = 5000; // 5 segundos en milisegundos
+
+        // Identificador del intervalo del temporizador
+        let intervalId;
+
+        // Variable que almacena el contenido HTML del ranking
+        let rankingHtml = "<h2>Ranking:</h2><ul>";
+
+        // Función que inicia el temporizador
+        function iniciarTemporizador() {
+            intervalId = setInterval(function() {
+                // Decrementar el tiempo restante en 10 milisegundos
+                tiempoRestante -= 10;
+
+                // Actualizar la visualización del temporizador
+                actualizarTemporizador();
+
+                // Verificar si el tiempo restante ha llegado a cero
+                if (tiempoRestante <= 0) {
+                    finalizarMision();
+                }
+            }, 10);
+        }
+
+        // Función que actualiza la visualización del temporizador en la página
+        function actualizarTemporizador() {
+            // Actualizar el contenido del elemento con el tiempo restante, convertido a segundos con tres decimales
+            document.getElementById('temporizador').textContent = (tiempoRestante / 1000).toFixed(3);
+        }
+
+        // Función que finaliza la misión
+        function finalizarMision() {
+            // Detener el intervalo del temporizador
+            clearInterval(intervalId);
+
+            // Mostrar un mensaje de alerta
+            alert("Misión finalizada. ¡Buena suerte en el próximo intento!");
+
+            // Mostrar el ranking actualizado
+            mostrarRanking();
+
+            // Habilitar el botón "Iniciar Misión" y deshabilitar el botón "Abortar Misión"
+            document.getElementById('iniciarBtn').disabled = false;
+            document.getElementById('abortarBtn').disabled = true;
+        }
+
+        // Función que inicia la misión
+        function iniciarMision() {
+            // Restablecer el tiempo restante a 5 segundos
+            tiempoRestante = 5000;
+
+            // Deshabilitar el botón "Iniciar Misión" y habilitar el botón "Abortar Misión"
+            document.getElementById('iniciarBtn').disabled = true;
+            document.getElementById('abortarBtn').disabled = false;
+
+            // Iniciar el temporizador
+            iniciarTemporizador();
+        }
+
+        // Función que aborta la misión
+        function abortarMision() {
+            // Detener el intervalo del temporizador
+            clearInterval(intervalId);
+
+            // Calcular el tiempo de aborto
+            const tiempoAborto = 5000 - tiempoRestante;
+
+            // Solicitar el nombre del participante
+            const nombre = prompt("¡Abortado! Ingresa tu nombre para registrar tu intento:");
+            
+            // Verificar si se ingresó un nombre
+            if (nombre) {
+                // Agregar la información al ranking
+                rankingHtml += "<li>" + nombre + " - " + (tiempoAborto / 1000).toFixed(3) + "s</li>";
+
+                // Mostrar el ranking actualizado
+                mostrarRanking();
+
+                // Habilitar el botón "Iniciar Misión" y deshabilitar el botón "Abortar Misión"
+                document.getElementById('iniciarBtn').disabled = false;
+                document.getElementById('abortarBtn').disabled = true;
+            } else {
+                // Mostrar un mensaje de alerta si no se ingresó un nombre
+                alert("Intento abortado sin registrar en el ranking.");
+            }
+        }
+
+        // Función que muestra el ranking en la página
+        function mostrarRanking() {
+            document.getElementById('ranking').innerHTML = rankingHtml + "</ul>";
+        }
+
+        // Iniciar el temporizador al cargar la página
+        window.onload = function() {
+            // Asociar la función de inicio de misión al botón correspondiente
+            document.getElementById('iniciarBtn').onclick = iniciarMision;
+
+            // Asociar la función de abortar misión al botón correspondiente
+            document.getElementById('abortarBtn').onclick = abortarMision;
+        };
+    </script>
+</body>
+</html>
