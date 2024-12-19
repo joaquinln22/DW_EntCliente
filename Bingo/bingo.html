@@ -6,9 +6,94 @@
     <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
     <script src="./js/bootstrap.bundle.min.js"></script>
     <title>Bingo</title>
-    <link rel="icon" href="./images/bingo_favicon.png" type="image/png">
+    <link rel="icon" href="./images/favicon.png" type="image/png">
+    <script>
+        // Funcion para actualizar fecha y hora
+        function updateFechaHora(){
+            const fechita_horita = document.getElementById("fecha-hora");
+            const actual = new Date();
+            var d = actual.getDate();
+            var mes = actual.getMonth();
+            var meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+            var m = meses[mes];
+            var a = actual.getFullYear();
+            var h = actual.getHours();
+            var min = actual.getMinutes();
+            var s = actual.getSeconds();
+            if(h<10){
+                h="0"+h;
+            }else if(min<10){
+                min="0"+min;
+            }else if(s<10 || s==0){
+                s="0"+s
+            }
+            fechita_horita.textContent = d+" "+m+" "+a+" "+h+":"+min+":"+s;
+        }
+
+        // Actualizamos la hora cada segundo
+        setInterval(updateFechaHora, 1000);
+
+        // Ejecutamos la funcion updateFechaHora() nada más cargar la página
+        window.onload = updateFechaHora;
+
+        // Constructor para el objeto alumno
+        function Alumno(nombre, apellido, edad){
+            this.nombre=nombre;
+            this.apellido=apellido;
+            this.edad=edad;
+        }
+
+        // Creamos a los alumnos
+        const alumno1= new Alumno("Julio", "Mondéjar", 18);
+        const alumno2= new Alumno("Uriel López", "18", );
+        const alumno3= new Alumno("Fath Allah", "Echajri", 20);
+        const alumno4= new Alumno("Iván", "Sabater", 30);
+        const alumno5= new Alumno("Alberto", "Castaño", 32);
+        const alumno6= new Alumno("Iván", "Gil", 33);
+        const alumno7= new Alumno("Mehdi", "Laaouinate", 18);
+        const alumno8= new Alumno("José Ignacio", "Gil", 27);
+        const alumno9= new Alumno("David", "Corbalán", 22);
+        const alumno10= new Alumno("Maria Consuelo", "Bravo", 28);
+        const alumno11= new Alumno("Jaime", "Rubio", 22);
+        const alumno12= new Alumno("Alejandro", "Vascónez", 25);
+        const alumno13= new Alumno("Jesús", "Carrasco", 26);
+        const alumno14= new Alumno("Álvaro", "Martínez", 21);
+        const alumno15= new Alumno("Francisco José", "López", 21);
+        const alumno16= new Alumno("Uriel", "Martínez", 19);
+        const alumno17= new Alumno("Jesús", "Pérez", 19);
+        const alumno18= new Alumno("Jalil", "Tahri", 18);
+        const alumno19= new Alumno("José Antonio", "Peñalver", 18);
+        const alumno20= new Alumno("Adam", "El Nabaoui", 18);
+        const alumno21= new Alumno("Marlom Joseph", "Cotto", 22);
+        const alumno22= new Alumno("Adrián", "Vicente", 28);
+        const alumno23= new Alumno("Eduardo", "Piquer", 24);
+        const alumno24= new Alumno("Mario", "Martínez", 26);
+        const alumno25= new Alumno("Erikas", "Pilipavicius", 27);
+        const alumno26= new Alumno("Rafael", "Lizán", 24);
+        const alumno27= new Alumno("Ángel", "Guerra", 23);
+        const alumno28= new Alumno("Hamza", "Daoudi", 22);
+
+
+    </script>
 </head>
 <body>
-    
+    <header style="background-color: #261c2f; height: 220px;">
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <img src="./images/Letrero.webp" alt="Bingo-VegaMedia" class="img-fluid " style="width: 175px; height: 175px;">
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-auto" style="border: 2px solid #f9bcf3; border-radius: 25px;">
+                    <span id="fecha-hora" style="color: whitesmoke; font-size: 1.2em;"></span>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section>
+
+    </section>
+    <footer>
+
+    </footer>
 </body>
 </html>
