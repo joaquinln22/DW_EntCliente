@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .question h3 {
+            margin: 0 0 10px 0;
+        }
+        .question input {
+            margin-right: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Encuesta</h1>
+    <form id="quizForm">
+        <!-- Preguntas -->
+        <div class="question">
+            <h3>1. ¿Quién es el protagonista de DragonBall?</h3>
+            <label><input type="radio" name="q1" value="correct"> Kakarot</label><br>
+            <label><input type="radio" name="q1" value="wrong"> Vegeta</label><br>
+            <label><input type="radio" name="q1" value="wrong"> Goten</label>
+        </div>
+        <div class="question">
+            <h3>2. ¿Cuánto es 2 + 2?</h3>
+            <label><input type="radio" name="q2" value="wrong"> 3</label><br>
+            <label><input type="radio" name="q2" value="correct"> 4</label><br>
+            <label><input type="radio" name="q2" value="wrong"> 5</label>
+        </div>
+        <!-- Añade 8 preguntas más siguiendo el formato anterior -->
+        <div class="question">
+            <h3>3. ¿Cuál es el océano más grande del mundo?</h3>
+            <label><input type="radio" name="q3" value="correct"> Océano Pacífico</label><br>
+            <label><input type="radio" name="q3" value="wrong"> Océano Atlántico</label><br>
+            <label><input type="radio" name="q3" value="wrong"> Océano Índico</label>
+        </div>
+        <!-- Continúa con las preguntas hasta llegar a 10 -->
+        <button type="button" onclick="checkResults()">Enviar</button>
+    </form>
+
+    <script>
+        function checkResults() {
+            const form = document.getElementById('quizForm');
+            const questions = form.querySelectorAll('.question');
+            let correct = 0;
+            let incorrect = 0;
+            let blank = 0;
+
+            questions.forEach(question => {
+                const inputs = question.querySelectorAll('input');
+                let answered = false;
+
+                inputs.forEach(input => {
+                    if (input.checked) {
+                        answered = true;
+                        if (input.value === 'correct') {
+                            correct++;
+                        } else {
+                            incorrect++;
+                        }
+                    }
+                });
+
+                if (!answered) {
+                    blank++;
+                }
+            });
+
+            alert(`Resultados:\nCorrectas: ${correct}\nIncorrectas: ${incorrect}\nEn blanco: ${blank}`);
+        }
+    </script>
+</body>
+</html>
