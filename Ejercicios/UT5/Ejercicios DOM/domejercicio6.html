@@ -14,8 +14,23 @@
 <a href="http://es.aliexpress.com">Aliexpress</a><br>
 <a href="enlace3.html">Mi página 3</a>
 <p>
-<input type="button" name="boton" value="Abrir">
+<input onclick="abrirEnlaces()" type="button" name="boton" value="Abrir">
 </p>
 <div id="resultado"></div>
+
+<script>
+    function abrirEnlaces(){
+        let enlaces=document.querySelectorAll('a');
+        let result=document.getElementById("resultado");
+        let cont=0;
+        for (let enlace of enlaces){
+            window.open(enlace.href, "_blank", "width=500px", "height=500px");
+            result.innerHTML+="<li>"+enlace.textContent+"</li>";
+            cont++;
+        }
+        result.innerHTML+="<p>El número de enlaces abiertos es: "+cont+"</p>";
+    }
+
+</script>
 </body>
 </html>
