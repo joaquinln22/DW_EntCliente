@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio regalos</title>
+    <style>
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            width: 300px;
+            margin: auto;
+        }
+
+        .grid-item {
+            background-color: cornflowerblue;
+            width: 100%;
+            aspect-ratio: 1; /* Mantiene el div cuadrado */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px; /* Bordes redondeados */
+        }
+
+        .grid-item img {
+            width: 20px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2 style="text-align: center;">Ejercicio regalos</h2>
+    <p style="text-align: center;">
+        Cuando pasas sobre uno de los elementos se muestra una imagen y cuando quitas el cursor vuelve a la imagen del principio.
+    </p>
+
+    <div class="container">
+        <div class="grid-item" onmouseover="mOver(this)" onmouseout="mOut(this)">
+            <img src="/recursos/pokeball.png" alt="pokeball">
+        </div>
+        <div class="grid-item" onmouseover="mOver(this)" onmouseout="mOut(this)">
+            <img src="/recursos/pokeball.png" alt="pokeball">
+        </div>
+        <div class="grid-item" onmouseover="mOver(this)" onmouseout="mOut(this)">
+            <img src="/recursos/pokeball.png" alt="pokeball">
+        </div>
+        <div class="grid-item" onmouseover="mOver(this)" onmouseout="mOut(this)">
+            <img src="/recursos/pokeball.png" alt="pokeball">
+        </div>
+        <div class="grid-item" onmouseover="mOver(this)" onmouseout="mOut(this)">
+            <img src="/recursos/pokeball.png" alt="pokeball">
+        </div>
+        <div class="grid-item" onmouseover="mOver(this)" onmouseout="mOut(this)">
+            <img src="/recursos/pokeball.png" alt="pokeball">
+        </div>
+        <div class="grid-item" onmouseover="mOver(this)" onmouseout="mOut(this)">
+            <img src="/recursos/pokeball.png" alt="pokeball">
+        </div>
+        <div class="grid-item" onmouseover="mOver(this)" onmouseout="mOut(this)">
+            <img src="/recursos/pokeball.png" alt="pokeball">
+        </div>
+        <div class="grid-item" onmouseover="mOver(this)" onmouseout="mOut(this)">
+            <img src="/recursos/pokeball.png" alt="pokeball">
+        </div>
+    </div>
+
+    <script>
+        function mOver(obj) {
+            const img = obj.querySelector("img");
+            img.src = "/recursos/pika.jpg";
+        }
+
+        function mOut(obj) {
+            const img = obj.querySelector("img");
+            img.src = "/recursos/pokeball.png";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio regalos</title>
+    <style>
+        body {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            justify-content: center;
+            width: 300px;
+            margin: 50px auto;
+        }
+        .regalo {
+            background-color: cornflowerblue;
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="regalo" data-status="vacio">🎁</div>
+    <div class="regalo" data-status="vacio">🎁</div>
+    <div class="regalo" data-status="vacio">🎁</div>
+    <div class="regalo" data-status="premio">🎁</div>
+    <script>
+        const regalitos = document.getElementsByClassName("regalo");
+
+        for (let i = 0; i < regalitos.length; i++) {
+            regalitos[i].addEventListener("click", function abrir() {
+                const status = regalitos[i].getAttribute("data-status");
+                if (status === "premio") {
+                    regalitos[i].innerHTML = "🎂";
+                    alert("¡Encontraste el premio!");
+                } else {
+                    regalitos[i].innerHTML = "❌";
+                    alert("No es el premio, inténtalo de nuevo.");
+                }
+                regalitos[i].removeEventListener("click", abrir)
+            });
+        }
+    </script>
+</body>
+</html>
