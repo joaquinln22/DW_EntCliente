@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+</head>
+<body>
+    <script>
+        // Lista de colores
+        var colores = ['red', 'green', 'blue', 'yellow', 'darkcyan', 'brown', 'purple', 'grey', 'orange', 'pink'];
+
+        // Función para cambiar el color de fondo aleatoriamente
+        function cambiarColorFondo() {
+            // Obtener un índice aleatorio
+            var indiceAleatorio = Math.floor(Math.random() * colores.length);
+            // Cambiar el color de fondo del body
+            document.body.style.backgroundColor = colores[indiceAleatorio];
+        }
+
+        // Llamar a la función cada 2 segundos
+        setInterval(cambiarColorFondo, 2000);
+    </script>
+</body>
+</html>

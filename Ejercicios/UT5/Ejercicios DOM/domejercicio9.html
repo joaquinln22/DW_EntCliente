@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 9</title>
+</head>
+<body>
+    <div id="texto" style="font-size: 30pt; text-align: center;">BichoBola</div>
+    <button onclick="agregarAlert()" id="1">Añade alerta</button>
+    <button onclick="cambiarColor()" id="2">Cambio color</button>
+    <button onclick="vuelveColor()" id="3">Vuelve color</button>
+    <button onclick="resetear()" id="4">Resetea</button>
+    <script>
+        var t1=document.getElementById("texto");
+        function agregarAlert(){
+            t1.addEventListener("click", alertita);
+        }
+        function alertita(){
+            alert("Hola");
+        }
+        function cambiarColor(){
+            t1.addEventListener("mouseover", cambio);
+        }
+        function cambio(){
+            t1.style.color="purple";
+        }
+        function vuelveColor(){
+            t1.addEventListener("mouseout", vuelve);
+        }
+        function vuelve(){
+            t1.style.color="black";
+        }
+        function resetear(){
+            t1.removeEventListener("click", alertita);
+            t1.removeEventListener("mouseover", cambio);
+            t1.removeEventListener("mouseout", vuelve);
+        }
+    </script>
+</body>
+</html>
