@@ -3,115 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>En busca de los Pokémon perdidos</title>
+    <title>En busca de los diamantes perdidos</title>
     <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-    <h1>En busca de los Pokémon perdidos</h1>
-    <div id="game-board" class="board"></div>
-    <button id="extra-turn">Intentar ganar turno extra</button>
-    <button id="reset-game">Reiniciar Juego</button>
-    <div id="score">
-        <p>Jugador: <span id="player-score">0</span></p>
-        <p>CPU: <span id="cpu-score">0</span></p>
-        <p>Turnos del jugador: <span id="player-turns">0</span></p>
-        <p>Turnos de la CPU: <span id="cpu-turns">0</span></p>
+    <h1>En busca de los diamantes perdidos</h1>
+    <div id="tablero_de_juego" class="tablero_de_juego"></div>
+    <button id="turno_extra" class="boton_turno_extra">Intentar ganar turno extra</button>
+    <button id="reinicio" class="boton_reinicio">Reiniciar Juego</button>
+    <div id="puntuacion">
+        <p>Jugador: <span id="puntuacion_jugador">0</span></p>
+        <p>CPU: <span id="puntuacion_cpu">0</span></p>
+        <p>Turnos del jugador: <span id="turnos_jugador">0</span></p>   
+        <p>Turnos de la CPU: <span id="turnos_cpu">0</span></p>
     </div>
-    <h2>Histórico de jugadores</h2>
-    <ul id="history"></ul>
+    <h2>Histórico de partidas</h2>
+    <ul id="historico_partidas"></ul>
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const board = document.getElementById("game-board");
-            const extraTurnBtn = document.getElementById("extra-turn");
-            const resetGameBtn = document.getElementById("reset-game");
-            const playerScoreEl = document.getElementById("player-score");
-            const cpuScoreEl = document.getElementById("cpu-score");
-            const playerTurnsEl = document.getElementById("player-turns");
-            const cpuTurnsEl = document.getElementById("cpu-turns");
-            const historyEl = document.getElementById("history");
+        document.addEventListener("DOMContentLoaded", function() {
+            // Elementos del DOM
+            var tablero = document.getElementById("tablero_de_juego");
+            var boton_turno_extra = document.getElementById("turno_extra");
+            var boton_reinicio = document.getElementById("reinicio");
+            var puntuacion_jugador = document.getElementById("puntuacion_jugador");
+            var puntuacion_cpu = document.getElementById("puntuacion_cpu");
+            var turnos_jugador = document.getElementById("turnos_jugador");
+            var turnos_cpu = document.getElementById("turnos_cpu");
+            var historico_partidas = document.getElementById("historico_partidas");
             
-            let boardState = Array(16).fill(null);
-            let pokemonPositions = new Set();
-            while (pokemonPositions.size < 5) {
-                pokemonPositions.add(Math.floor(Math.random() * 16));
+            // Inicialización del tablero y posiciones de Pokémon
+            var estado_tablero = Array(16).fill(null);
+            var posiciones_diamantes = new Set();
+            while (posiciones_diamantes.size < 5) {
+                posiciones_diamantes.add(Math.floor(Math.random() * 16));
             }
             
-            let playerScore = 0, cpuScore = 0, playerTurns = 0, cpuTurns = 0;
-            let gameOver = false;
+            // Variables de puntuación y control del juego
+            var puntuacionJugador = 0, puntuacionCPU = 0, turnosJugador = 0, turnosCPU = 0;
+            var juegoTerminado = false;
+            var turnoExtraDisponible = false;
+            var puedeUsarTurnoExtra = false;
+            var tiempoEspera;
             
-            function renderBoard() {
-                board.innerHTML = "";
-                boardState.forEach((state, index) => {
-                    const cell = document.createElement("div");
-                    cell.dataset.index = index;
-                    cell.addEventListener("click", playerTurn);
-                    if (state !== null) {
-                        cell.textContent = state ? "🐾" : "X";
-                        cell.style.backgroundColor = "lightgray";
+            // Función para renderizar el tablero en la interfaz
+            function actualizarTablero() {
+                tablero.innerHTML = "";
+                for (var i = 0; i < estado_tablero.length; i++) {
+                    var celda = document.createElement("div");
+                    celda.dataset.indice = i;
+                    celda.addEventListener("click", turnoJugador);
+                    var imagen = document.createElement("img");
+                    // Definir imágenes según el estado de la casilla
+                    if (estado_tablero[i] !== null) {
+                        imagen.src = estado_tablero[i] ? "./recursos/diamond.png" : "/recursos/carne_zombie.png";
+                    } else {
+                        imagen.src = "/recursos/chest.png";
                     }
-                    board.appendChild(cell);
-                });
-            }
-            
-            function playerTurn(event) {
-                if (gameOver) return;
-                const index = event.target.dataset.index;
-                if (boardState[index] !== null) return;
-                boardState[index] = pokemonPositions.has(parseInt(index));
-                playerTurns++;
-                playerTurnsEl.textContent = playerTurns;
-                checkWin();
-                setTimeout(cpuTurn, 500);
-                renderBoard();
-            }
-            
-            function cpuTurn() {
-                if (gameOver) return;
-                let availableCells = boardState.map((val, idx) => val === null ? idx : null).filter(v => v !== null);
-                if (availableCells.length === 0) return;
-                let index = availableCells[Math.floor(Math.random() * availableCells.length)];
-                boardState[index] = pokemonPositions.has(index);
-                cpuTurns++;
-                cpuTurnsEl.textContent = cpuTurns;
-                checkWin();
-                renderBoard();
-            }
-            
-            function checkWin() {
-                playerScore = boardState.filter(val => val === true).length;
-                cpuScore = boardState.filter((val, idx) => val === false && pokemonPositions.has(idx)).length;
-                playerScoreEl.textContent = playerScore;
-                cpuScoreEl.textContent = cpuScore;
-                if (playerScore >= 3) {
-                    gameOver = true;
-                    let name = prompt("¡Felicidades! Introduce tu nombre:");
-                    if (name) historyEl.innerHTML += `<li>${name} → ${playerTurns} tiradas</li>`;
-                } else if (cpuScore >= 3) {
-                    gameOver = true;
-                    historyEl.innerHTML += `<li>CPU → ${cpuTurns} tiradas</li>`;
+                    imagen.style.width = "200%";
+                    imagen.style.height = "100%";
+                    celda.appendChild(imagen);
+                    tablero.appendChild(celda);
                 }
             }
             
-            extraTurnBtn.addEventListener("click", () => {
-                if (Math.floor(Math.random() * 6) + 1 === 6) {
-                    alert("¡Ganas un turno extra!");
+            // Función que maneja el turno del jugador
+            function turnoJugador(evento) {
+                if (juegoTerminado || turnoExtraDisponible) return;
+                var indice = evento.target.parentElement.dataset.indice;
+                if (estado_tablero[indice] !== null) return;
+                estado_tablero[indice] = posiciones_diamantes.has(parseInt(indice));
+                turnosJugador++;
+                turnos_jugador.textContent = turnosJugador;
+                
+                if (posiciones_diamantes.has(parseInt(indice))) {
+                    puntuacionJugador++;
+                    puntuacion_jugador.textContent = puntuacionJugador;
+                    puedeUsarTurnoExtra = true;
+                    tiempoEspera = setTimeout(turnoCPU, 3000);
+                } else {
+                    setTimeout(turnoCPU, 500);
+                }
+                verificarVictoria();
+                actualizarTablero();
+            }
+            
+            // Función que maneja el turno de la CPU
+            function turnoCPU() {
+                if (juegoTerminado) return;
+                var celdasDisponibles = estado_tablero.map(function(valor, indice) {
+                    return valor === null ? indice : null;
+                }).filter(function(valor) { return valor !== null; });
+                if (celdasDisponibles.length === 0) return;
+                var indice = celdasDisponibles[Math.floor(Math.random() * celdasDisponibles.length)];
+                estado_tablero[indice] = posiciones_diamantes.has(indice);
+                turnosCPU++;
+                turnos_cpu.textContent = turnosCPU;
+                
+                if (posiciones_diamantes.has(indice)) {
+                    puntuacionCPU++;
+                    puntuacion_cpu.textContent = puntuacionCPU;
+                }
+      
+                verificarVictoria();
+                turnoExtraDisponible = false;
+                puedeUsarTurnoExtra = false;
+                actualizarTablero();
+            }
+            
+                        // Función que maneja el turno del jugador
+                        function turnoJugador(evento) {
+                if (juegoTerminado || turnoExtraDisponible) return;
+                var indice = evento.target.parentElement.dataset.indice;
+                if (estado_tablero[indice] !== null) return;
+                estado_tablero[indice] = posiciones_diamantes.has(parseInt(indice));
+                turnosJugador++;
+                turnos_jugador.textContent = turnosJugador;
+                
+                if (posiciones_diamantes.has(parseInt(indice))) {
+                    puntuacionJugador++;
+                    puntuacion_jugador.textContent = puntuacionJugador;
+                    puedeUsarTurnoExtra = true;
+                    tiempoEspera = setTimeout(turnoCPU, 3000);
+                } else {
+                    setTimeout(turnoCPU, 500);
+                }
+                verificarVictoria();
+                actualizarTablero();
+            }
+            
+            // Función para verificar si hay un ganador
+            function verificarVictoria() {
+                puntuacion_jugador.textContent = puntuacionJugador;
+                puntuacion_cpu.textContent = puntuacionCPU;
+                
+                if (puntuacionJugador > 2) {
+                    juegoTerminado = true;
+                    var nombre = prompt("¡Felicidades! Introduce tu nombre:");
+                    if (nombre) historico_partidas.innerHTML += "<li>" + nombre + " → " + turnosJugador + " tiradas</li>";
+                } else if (puntuacionCPU > 2) {
+                    juegoTerminado = true;
+                    historico_partidas.innerHTML += "<li>CPU → " + turnosCPU + " tiradas</li>";
+                }
+            }
+            
+            // Evento para el botón de turno extra
+            boton_turno_extra.addEventListener("click", function() {
+                if (!puedeUsarTurnoExtra || turnoExtraDisponible) return;
+                clearTimeout(tiempoEspera);
+                var dado = Math.floor(Math.random() * 6) + 1;
+                if (dado === 6) {
+                    alert("¡Ganas un turno extra! Puedes seleccionar otra casilla.");
+                    turnoExtraDisponible = false;
+                } else {
+                    alert("¡Vaya no ha habido suerte! Has sacado un " + dado + ".");
+                    puedeUsarTurnoExtra = false;
+                    setTimeout(turnoCPU, 500);
                 }
             });
             
-            resetGameBtn.addEventListener("click", () => {
-                boardState.fill(null);
-                pokemonPositions.clear();
-                while (pokemonPositions.size < 5) {
-                    pokemonPositions.add(Math.floor(Math.random() * 16));
+            // Evento para reiniciar el juego
+            boton_reinicio.addEventListener("click", function() {
+                estado_tablero.fill(null);
+                posiciones_diamantes.clear();
+                while (posiciones_diamantes.size < 5) {
+                    posiciones_diamantes.add(Math.floor(Math.random() * 16));
                 }
-                playerScore = cpuScore = playerTurns = cpuTurns = 0;
-                playerScoreEl.textContent = cpuScoreEl.textContent = "0";
-                playerTurnsEl.textContent = cpuTurnsEl.textContent = "0";
-                gameOver = false;
-                renderBoard();
+                puntuacionJugador = puntuacionCPU = turnosJugador = turnosCPU = 0;
+                puntuacion_jugador.textContent = puntuacion_cpu.textContent = "0";
+                turnos_jugador.textContent = turnos_cpu.textContent = "0";
+                juegoTerminado = false;
+                turnoExtraDisponible = false;
+                puedeUsarTurnoExtra = false;
+                actualizarTablero();
             });
             
-            renderBoard();
+            // Renderizar el tablero al inicio
+            actualizarTablero();
         });
     </script>
 </body>
