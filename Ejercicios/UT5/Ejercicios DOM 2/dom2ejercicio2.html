@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejercicio 1</title>
+    <title>Ejercicio 2</title>
 </head>
 <body onload="crearElementos()">
+    <button onclick="eliminarReemplazar()">Eliminar y Reemplazar</button>
     <script>
         function crearElementos(){
             var div1=document.createElement("div");
@@ -21,6 +22,14 @@
             div2.style.color="red";
             div2.appendChild(parrafito);
             document.body.appendChild(div2);
+        }
+        function eliminarReemplazar(){
+            document.getElementById("segunda").remove();
+            var div3=document.createElement("div");
+            div3.id="nuevo";
+            div3.textContent="Soy un nuevo contenido";
+            div3.style.color="green";
+            document.body.appendChild(div3);
         }
     </script>
 </body>

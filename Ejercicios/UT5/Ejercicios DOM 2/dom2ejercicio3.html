@@ -1,0 +1,38 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+ </head>
+ <body>
+    <button id="generarParrafos" onclick="generarParrafos()">Generar Parrafos</button>
+    <button onclick="cambiarColor()">Texto rojo</button>
+    <button id="cambiarTamano" onclick="cambiarTamano()">Cambiar Tamaño</button>
+    <script>
+        function generarParrafos() {
+            for(var i=0; i<10; i++){
+                var parrafo = document.createElement("p");
+                parrafo.textContent = "Párrafo "+(i+1);
+                document.body.appendChild(parrafo);
+            }
+            document.getElementById("generarParrafos").disabled=true;
+        }
+        function cambiarColor() {
+            var parrafo = document.getElementsByTagName("p");
+            for(var i=0; i<parrafo.length; i++){
+                if((i%2)==0){
+                    parrafo[i].style.color = "red";
+                }
+            }
+        }
+        function cambiarTamano() {
+            var parrafo = document.getElementsByTagName("p");
+            for(var i=0; i<parrafo.length; i++){
+                parrafo[i].style.fontSize = "50px";
+            }
+            document.getElementById("cambiarTamano").disabled=true;
+        }
+    </script>
+ </body>
+ </html>
