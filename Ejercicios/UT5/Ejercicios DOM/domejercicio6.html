@@ -1,36 +1,40 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>DOM</title>
+    <title>DOM - Abrir Enlaces</title>
 </head>
 <body>
 <h1>Página con enlaces</h1>
 <a href="http://www.ces-vegamedia.es">Centro Vega Media</a>
 <div id="enlaces">
-	<a href="http://www.pccomponentes.com">PC Componentes</a><br>
-	<a href="enlace2.html">Mi página 2</a>
+    <a href="http://www.pccomponentes.com">PC Componentes</a><br>
+    <a href="enlace2.html">Mi página 2</a>
 </div>
 <a href="http://es.aliexpress.com">Aliexpress</a><br>
 <a href="enlace3.html">Mi página 3</a>
 <p>
-<input onclick="abrirEnlaces()" type="button" name="boton" value="Abrir">
+    <input onclick="abrirEnlaces()" type="button" value="Abrir">
 </p>
 <div id="resultado"></div>
 
 <script>
-    function abrirEnlaces(){
-        let enlaces=document.querySelectorAll('a');
-        let result=document.getElementById("resultado");
-        let cont=0;
-        for (let enlace of enlaces){
-            window.open(enlace.href, "_blank", "width=500px", "height=500px");
-            result.innerHTML+="<li>"+enlace.textContent+"</li>";
+    function abrirEnlaces() {
+        let enlaces = document.querySelectorAll('a');
+        let result = document.getElementById("resultado");
+        let lista = "<ul>";
+        let cont = 0;
+
+        for (let enlace of enlaces) {
+            window.open(enlace.href, "_blank", "width=500,height=500");
+            lista += "<li>" + enlace.textContent + "</li>";
             cont++;
         }
-        result.innerHTML+="<p>El número de enlaces abiertos es: "+cont+"</p>";
-    }
 
+        lista += "</ul>";
+        result.innerHTML = lista + "<p>El número de enlaces abiertos es: " + cont + "</p>";
+    }
 </script>
+
 </body>
 </html>

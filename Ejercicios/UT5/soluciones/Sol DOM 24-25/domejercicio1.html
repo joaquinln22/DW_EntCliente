@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>DOM</title>
+    
+</head>
+<body>
+<a href="http://www.laverdad.es">La Verdad</a> 
+<a href="http://www.pccomponentes.com">PC Componentes</a> 
+<a href="http://www.ces-vegamedia.es">CES Vega Media</a> 
+<a href="http://www.elconfidencial.com">El confidencial</a> 
+<script>
+    var links = document.getElementsByTagName("a");
+        for(i=0; i < links.length; i++){
+            window.open(links[i].href);
+        }
+    </script>
+</body>
+</html>

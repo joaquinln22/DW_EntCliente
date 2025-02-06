@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>DOM</title>
+    
+</head>
+<body>
+<center>
+<h1>¡Encuesta!</h1>
+<h3>Primera pregunta:</h3>
+<p>¿Cual es la capital de España?</p>
+<input type="radio" value="error" id="1" name="1"> Murcia
+<input type="radio" value="correcto" id="1" name="1"> Madrid
+<input type="radio" value="error" id="1" name="1"> Barcelona
+<br><hr>
+<h3>Segunda pregunta:</h3>
+<p>¿Quien es el protagonista del videojuego Uncharted?</p>
+<input type="radio" value="correcto" id="1" name="2"> Nathan Drake
+<input type="radio" value="error" id="1" name="2"> Lara Croft
+<input type="radio" value="error" id="1" name="2"> Marty McFly
+<br><hr>
+<h3>Tercera pregunta:</h3>
+<p>¿Cúal de los siguientes NO tiene superpoderes?</p>
+<input type="radio" value="error" id="1" name="3"> Superman
+<input type="radio" value="correcto" id="1" name="3"> Batman
+<input type="radio" value="error" id="1" name="3"> Max Caulfield
+<br><hr>
+<h3>Cuarta pregunta:</h3>
+<p>¿En que año fué rodada la primera entrega de Star Wars?</p>
+<input type="radio" value="error" id="1" name="4"> 1985
+<input type="radio" value="error" id="1" name="4"> 1999
+<input type="radio" value="correcto" id="1" name="4"> 1977
+<br><hr>
+<h3>Quinta pregunta:</h3>
+<p>¿Cual de los siguientes videojuegos ha sido desarrollado por una sola persona?</p>
+<input type="radio" value="correcto" id="1" name="5"> Stardew Valley
+<input type="radio" value="error" id="1" name="5"> Terraria
+<input type="radio" value="error" id="1" name="5"> Minecraft
+<br><hr>
+<h3>Sexta pregunta:</h3>
+<p>En Japón, ¿Qué ocurre con frecuencia?</p>
+<input type="radio" value="error" id="1" name="6"> Tornados
+<input type="radio" value="correcto" id="1" name="6"> Terremotos
+<input type="radio" value="error" id="1" name="6"> Caida de meteoritos
+<br><hr>
+<h3>Septima pregunta:</h3>
+<p>¿Cual es el tercer apellido del alumno Fernando Ureña?</p>
+<input type="radio" value="error" id="1" name="7"> Gracia
+<input type="radio" value="correcto" id="1" name="7"> Herrero
+<input type="radio" value="error" id="1" name="7"> López
+<br><hr>
+<h3>Octava pregunta:</h3>
+<p>¿A que universo cinematográfico pertenece Batman?</p>
+<input type="radio" value="error" id="1" name="8"> Marvel
+<input type="radio" value="correcto" id="1" name="8"> DC
+<input type="radio" value="error" id="1" name="8"> Ninguno de los anteriores
+<br><hr>
+<h3>Novena pregunta:</h3>
+<p>¿Qué proyecto están realizando los alumnos Carlos y Dani?</p>
+<input type="radio" value="error" id="1" name="9"> Una página web
+<input type="radio" value="error" id="1" name="9"> Una maquina de bebidas
+<input type="radio" value="correcto" id="1" name="9"> BB-8 en 3D
+<br><hr>
+<h3>Decima pregunta:</h3>
+<p>¿Quien vive en la piña debajo del mar?</p>
+<input type="radio" value="correcto" id="1" name="10"> Bob Esponja
+<input type="radio" value="error" id="1" name="10"> Donald Trump
+<input type="radio" value="error" id="1" name="10"> Rick Astley
+<br><hr>
+<br>
+<input type="button" value="Finalizar encuesta" onclick="resultados()"><br><br>
+<script>
+   function resultados(){
+       var correctas = document.querySelectorAll("input[value='correcto']:checked");
+       var erroneas = document.querySelectorAll("input[value='error']:checked");
+       var nocontesta = 10-(correctas.length+erroneas.length);
+       alert("Respuestas acertadas: "+correctas.length+"\nRespuestas erroneas: "+erroneas.length+"\nNo contestadas: "+nocontesta);
+       
+   }
+    </script>
+    </center>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="texto">Ejercicio 9</div>
+    
+    <button onclick="agregarAlert()" id="1">Añade alert</button>
+    <button onclick="cambiarColor()" id="2">Cambia color del texto</button>
+    <button onclick="vuelveColor()" id="3">Volver a negro</button>
+    <button onclick="reseteamos()" id="4">Reseteamos</button>
+
+    <script>
+        var t1=document.getElementById("texto");
+        function agregarAlert(){
+            t1.addEventListener("click", alertita);
+        }
+        function alertita(){
+            alert(t1.textContent);
+        }
+        //Sabemos que change en inglés es con g de gato
+        function cambiarColor(){
+            t1.addEventListener("mouseover", chanje);
+        }
+        function chanje(){
+            t1.style.color="red";
+        }
+        function vuelveColor(){
+            t1.addEventListener("mouseout", vuelvecito);
+        }
+        function vuelvecito(){
+            t1.style.color="black";
+        }
+        function reseteamos(){
+            t1.removeEventListener("mouseover", chanje);
+            t1.removeEventListener("mouseout", vuelvecito);
+            t1.removeEventListener("click", alertita);
+        }
+    </script>
+</body>
+</html>

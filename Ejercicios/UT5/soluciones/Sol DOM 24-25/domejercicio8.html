@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload="cambiarColor()">
+    <p id="demo" style="font-size: 20pt;">Lo ha resuelto Rony</p>
+    <script>
+        function cambiarColor(){
+            var colores=["red", "blue", "green", "purple"];
+            var ale=Math.floor(Math.random()*colores.length);
+            document.getElementById("demo").style.color=colores[ale];
+        }
+    </script>
+</body>
+</html>

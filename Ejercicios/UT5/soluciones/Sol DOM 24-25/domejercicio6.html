@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>DOM</title>
+</head>
+<body>
+<h1>Página con enlaces</h1>
+<a href="http://www.ces-vegamedia.es">Centro Vega Media</a>
+<div id="enlaces">
+	<a href="http://www.pccomponentes.com">PC Componentes</a><br>
+	<a href="enlace2.html">Mi página 2</a>
+</div>
+<a href="http://es.aliexpress.com">Aliexpress</a><br>
+<a href="enlace3.html">Mi página 3</a>
+<p>
+<input onclick="abrirEnlaces()" type="button" name="boton" value="Abrir">
+</p>
+<div id="resultado"></div>
+
+<script>
+    function abrirEnlaces(){
+        let enlaces= document.querySelectorAll('a');
+        let result= document.getElementById("resultado");
+        let cont=0;
+        for (let enlace of enlaces){
+            window.open(enlace.href, "_blank", "width=500, height=500");
+            result.innerHTML+="<li>"+enlace.textContent+"</li>";
+            cont++;
+        }
+        result.innerHTML+="<p>El número de enlaces abierto es:"+cont+"</p>";
+    }
+
+
+</script>
+
+</body>
+</html>

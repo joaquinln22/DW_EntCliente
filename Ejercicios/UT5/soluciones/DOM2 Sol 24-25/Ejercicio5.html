@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select id="dias1">
+        <option value="Lunes">Lunes</option>
+        <option value="Martes">Martes</option>
+        <option value="Miercoles">Miercoles</option>
+        <option value="Jueves">Jueves</option>
+        <option value="Viernes">Viernes</option>
+        <option value="Sabado">Sabado</option>
+        <option value="Domingo">Domingo</option>
+    </select>
+    <button onclick="moverDia()">Mover</button>
+    <select id="dias2">
+    </select>
+    <script>
+        function moverDia(){
+            var dias1=document.getElementById("dias1");
+            var dias2=document.getElementById("dias2");
+            var option =document.createElement("option");
+            option.value=dias1.value;
+            option.textContent=dias1.options[dias1.selectedIndex].textContent;
+            dias2.appendChild(option);
+            dias1.removeChild(dias1.options[dias1.selectedIndex]);
+        }
+    </script>
+</body>
+</html>

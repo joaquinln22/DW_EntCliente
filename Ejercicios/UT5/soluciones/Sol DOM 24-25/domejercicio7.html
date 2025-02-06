@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<style>
+    #container {
+        margin: 0 auto;
+        width: 400px;
+        height: 400px;
+        position: relative;
+        background: orange;
+        border: 5px dotted;
+        border-color: white;
+    }
+
+    #animate {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        background-color: cyan;
+        border-radius: 100%;
+        border: 1px solid;
+        border-color: aliceblue;
+    }
+    body{
+        text-align: center;
+        background-color: antiquewhite;
+    }
+    #x{
+        font-size: 30px;
+        font-family: sans-serif;
+        font-weight: bold;
+        margin-top: 20px;
+    }
+     #y{
+        font-size: 30px;
+        font-family: sans-serif;
+        font-weight: bold;
+        margin-top: 5px;
+    }
+    button{
+        font-size: 25px;
+        color: white;
+        background-color: deepskyblue;
+        border-style: none;
+        text-decoration: none;
+        padding: 5px;
+    }
+
+</style>
+
+<body>
+
+    <p>
+        <button onclick="myMove()">Reproducir animación</button>
+    </p>
+
+    <div id="container">
+        <div id="animate"></div>
+    </div>
+    <div id="x"></div>
+    <div id="y"></div>
+    <script>
+        var boton = document.getElementsByTagName("button");
+        function myMove() {
+            boton[0].addEventListener("click", reproduciendo);
+            var elem = document.getElementById("animate");
+            var posx = Math.floor(Math.random() * 350);
+            var posy = Math.floor(Math.random() * 350);
+            var id = setInterval(frame, 8);
+            var semuevehacia = 0;
+
+            function frame() {
+                if(posx==350){
+                    semuevehacia=1;
+                }
+                if(posy==350){
+                    semuevehacia=2;
+                }
+                if(posx==0){
+                    semuevehacia=3;
+                }
+                if(posy==0){
+                    semuevehacia=0;
+                }
+                if (semuevehacia == 1) {
+                    posx--;
+                    posy++;
+                    elem.style.top = posy + 'px';
+                    elem.style.left = posx + 'px';
+                }
+                if (semuevehacia == 2) {
+                    posx--;
+                    posy--;
+                    elem.style.top = posy + 'px';
+                    elem.style.left = posx + 'px';
+                }
+                if (semuevehacia == 3) {
+                    posx++;
+                    posy--;
+                    elem.style.top = posy + 'px';
+                    elem.style.left = posx + 'px';
+                }
+                if (semuevehacia == 0) {
+                    posx++;
+                    posy++;
+                    elem.style.top = posy + 'px';
+                    elem.style.left = posx + 'px';
+                }
+                document.getElementById("x").innerHTML="Valor de X: "+posx;
+                document.getElementById("y").innerHTML="Valor de Y: "+posy;
+            }
+        }
+        function reproduciendo(){
+            boton[0].onclick="";
+            alert("La animación ya está iniciada");
+        }
+
+    </script>
+
+</body>
+
+</html>

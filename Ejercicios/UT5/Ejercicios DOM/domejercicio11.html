@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 11</title>
+</head>
+<body>
+    <p>Escribe algo: <input type="text" width="20"></p>
+    <div id="texto">
+        Hola
+    </div>
+    <p><input type="text"></p>
+    <p><input type="text"></p>
+    <p><input type="text"></p>
+    <script>
+        var campos = document.getElementsByTagName("input");
+        campos[0].addEventListener("keyup", mayus);
+        function mayus() {
+            campos[0].value=campos[0].value.toUpperCase();
+        }
+        var texto = document.getElementById("texto");
+        texto.addEventListener("wheel", cambioColor);
+        function cambioColor() {
+            var colores =["red", "blue", "yellow", "aqua", "orange", "purple", "fuchsia", "green", "pink", "black"];
+            var rand = Math.floor(Math.random()*10);
+            texto.style.color = colores[rand];
+        }
+        
+
+        for (var i = 1; i < campos.length; i++){
+            campos[i].addEventListener("mouseover", sobre);
+            campos[i].addEventListener("mouseout", fuera);
+        }
+        function sobre() {
+            this.style.backgroundColor = "cyan";
+        }
+        function fuera() {
+            this.style.backgroundColor = "white";
+        }
+    </script>
+</body>
+</html>

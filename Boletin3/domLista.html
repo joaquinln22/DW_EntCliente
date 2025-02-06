@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista</title>
+</head>
+<body>
+    <ul>
+        <li>Peras</li>
+        <li>Manzanas</li>
+        <li>Platanos</li>
+        <li>Limones</li>
+    </ul>
+
+    <script>
+        var elemento=document.getElementsByTagName("li");
+        for(let i=0;i<elemento.length; i++) {   
+            elemento[i].addEventListener("click", function(){
+                elemento[i].style.textDecoration="line-through";
+            })
+        }
+    </script>
+</body>
+</html>

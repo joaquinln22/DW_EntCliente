@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload="crearElementos()">
+    
+    <script>
+        function crearElementos(){
+            var div1=document.createElement("div");
+            div1.id="primera";
+            div1.textContent="Este es el primer texto";
+            div1.style.color="blue";
+            document.body.appendChild(div1);
+
+            var div2=document.createElement("div");
+            div2.id="segunda";
+            var parrafito =document.createElement("p");
+            parrafito.textContent="Este es el segundo texto";
+            parrafito.style.color="red";
+            div2.appendChild(parrafito);
+            document.body.appendChild(div2);
+            
+        }
+    </script>
+</body>
+</html>

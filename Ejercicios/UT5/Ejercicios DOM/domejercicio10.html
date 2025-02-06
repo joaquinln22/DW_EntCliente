@@ -10,8 +10,31 @@
     <div id="segunda"><p>Este es el segundo texto</p></div>
     <script>
         var d1=document.getElementById("primera");
+        d1.addEventListener("mouseover", cambiarColor);
+        d1.addEventListener("mouseout", volverColor);
+        
+        function cambiarColor(){
+            d1.style.color="green";
+        }
+
+        function volverColor(){
+            d1.style.color="blue";
+        }
         var d2=document.getElementById("segunda");
-        var cambiarFondo=false;
+        d2.addEventListener("click", cambiarFondo);
+        var color=false;
+
+        function cambiarFondo(){
+            if(color==false){
+                d2.style.backgroundColor="black";
+                d2.style.color="white";
+                color=true;
+            }else{
+                d2.style.backgroundColor="white";
+                d2.style.color="black";
+                color=false;
+            }
+        }
 
         
     </script>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="color">Primero</div>
+    <div class="fuente">Segundo</div>
+    <div class="color">Tercero</div>
+    <div class="fuente">Cuarto</div>
+
+    <button id="color" onclick="cambiarColor()">Cambiar color</button>
+    <button id="tamano" onclick="cambiarTamano()">Cambiar tamaño</button>
+
+    <script>
+        function cambiarColor(){
+            let colorcito=document.getElementsByClassName("color");
+            for (let index = 0; index < colorcito.length; index++) {
+                colorcito[index].style.color="green";
+                
+            }
+        }
+        function cambiarTamano(){
+            let fuentecita=document.getElementsByClassName("fuente");
+            for (let index = 0; index < fuentecita.length; index++) {
+                fuentecita[index].style.fontSize="54px";              
+            }
+        }
+    </script>
+</body>
+</html>

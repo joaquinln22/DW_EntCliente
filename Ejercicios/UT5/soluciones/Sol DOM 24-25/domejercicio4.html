@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select name="se" id="se">
+        <option value="https://www.laverdad.es">La Verdad</option>
+        <option value="https://www.pccomponentes.com">Pc Componentes</option>
+        <option value="https://www.ces-vegamedia.es">CES Vega Media</option>
+        <option value="https://www.elconfidencial.com">El confidencial</option>
+    </select>
+    <button onclick="update()">Try me</button>
+    <a id="link" name="link">Enlace generado</a>
+    <script>
+        function update(){
+            var selecter=document.getElementById("se");
+            var enlace= document.getElementById("link");
+            enlace.href=selecter.value;
+
+        }
+    </script>
+    
+</body>
+</html>

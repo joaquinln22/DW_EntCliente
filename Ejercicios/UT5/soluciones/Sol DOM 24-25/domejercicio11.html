@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>DOM</title>
+</head>
+
+<body>
+   <input type="text">
+   <div id="texto">Texto de prueba Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, sapiente tempore blanditiis magni aliquid, sit quos praesentium numquam nam facere quisquam cum aspernatur error qui reprehenderit fugiat architecto quia ipsa.</div>
+   <input type="text">
+   <input type="text">
+   <input type="text">
+   
+</body>
+<script>
+    var inp = document.getElementsByTagName("input");
+    inp[0].addEventListener("keyup", mayus);
+    function mayus(){
+       inp[0].value= inp[0].value.toUpperCase();
+    }
+    var texto = document.getElementById("texto");
+    texto.addEventListener("wheel", cambio);
+    function cambio(){
+        var colores =["red", "blue", "yellow", "aqua", "orange", "purple", "fuchsia", "green", "pink", "black"];
+        var rand = Math.floor(Math.random()*(10-0)+0);
+        texto.style.color = colores[rand];
+    }
+    for(i=1; i<inp.length; i++){
+        inp[i].addEventListener("mouseenter", cyan);
+        inp[i].addEventListener("mouseleave", salir);
+    }
+    function cyan(){
+        this.style.backgroundColor = "cyan";
+    }
+    function salir(){
+        this.style.backgroundColor = "white";
+    }
+    </script>
+</html>

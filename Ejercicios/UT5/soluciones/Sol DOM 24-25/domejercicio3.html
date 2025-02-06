@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio</title>
+</head>
+<body>
+    <script>
+    setInterval(cambiaFondo, 2000);
+    var colores=["red", "blue", "yellow", "green"];
+
+    function cambiaFondo(){
+        var rand=Math.floor(Math.random()*(colores.length));
+        document.body.style.backgroundColor=colores[rand];
+    }
+
+    </script>
+    
+</body>
+</html>

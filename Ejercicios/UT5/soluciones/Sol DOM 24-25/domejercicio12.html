@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #boton{
+            margin: 5px;
+            border: black 2px solid;
+            
+        }
+    </style>
+</head>
+<body>
+    
+    <button id="boton">
+        Gane una bambu lab a1 FREE!!
+    </button>
+
+    <script>
+        var botoncito=document.getElementById("boton");
+        botoncito.addEventListener("click", function(){alert("Tú código descuento es FGBBTY6")});
+        botoncito.addEventListener("mouseover", function(){
+            
+            var maxX=window.innerWidth-botoncito.offsetWidth;
+            var maxY=window.innerHeight-botoncito.offsetHeight;
+            var aleX=Math.floor(Math.random()*maxX);
+            var aleY=Math.floor(Math.random()*maxY);
+            //console.log(maxX,maxY,aleX,aleY);
+            botoncito.style.position='absolute';
+            botoncito.style.left=aleX+'px';
+            botoncito.style.top=aleY+'px';
+
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 12</title>
+    <style>
+        #boton{
+            margin: 1px;
+            background-color: rosybrown;
+            border-color: aqua;
+            border-radius: 5px;
+            color: black;
+        }
+
+        #boton:hover{
+            color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row" style="text-align: center;">
+            <div class="col">
+                <p>Haz clic en el botón de abajo si quieres ganar.</p>
+                <button id="boton">PREMIO</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        var botoncito=document.getElementById("boton");
+        botoncito.addEventListener("click", function(){alert("Has ganado un PLUMBUS.")});
+        botoncito.addEventListener("mouseover", function(){
+            var maxX=window.innerWidth-botoncito.offsetWidth;
+            var maxY=window.innerHeight-botoncito.offsetHeight;
+            var aleX=Math.floor(Math.random()*maxX);
+            var aleY=Math.floor(Math.random()*maxY);
+
+            botoncito.style.position="absolute";
+            botoncito.style.left=aleX+"px";
+            botoncito.style.top=aleY+"px";
+        });
+    </script>
+</body>
+</html>

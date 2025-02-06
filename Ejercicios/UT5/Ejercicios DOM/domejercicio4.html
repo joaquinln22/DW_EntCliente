@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4</title>
+</head>
+<body>
+    <select name="elige" id="elige">
+        <option value="http://www.laverdad.es">La verdad</option>
+        <option value="http://www.ces-vegamedia.es">CES Vega Media</option>
+        <option value="http://www.elconfidencial.com">El Confidencial</option>
+        <option value="http://www.pccomponentes.com">PC Componentes</option>
+    </select>
+    <button onclick="abrirPagina()">Genera enlace</button>
+    <a id="enlace" name="enlace">Enlace</a>
+    <script>
+        function abrirPagina() {
+            let selecter = document.getElementById("elige");
+            let url = document.getElementById("enlace");
+            url.href = selecter.value;
+        }
+    </script>
+</body>
+</html>

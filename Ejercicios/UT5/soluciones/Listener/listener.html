@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .suerte{
+            height: 100px;
+            width: 100px;
+            margin: 10px;
+            background-color: aqua;
+            float: left;
+            text-align: center;
+        }
+
+    </style>
+    
+</head>
+<body>
+    <div class="suerte" data-status="vacio">🎁</div>
+    <div class="suerte" data-status="premio">🎁</div>
+    <div class="suerte" data-status="vacio">🎁</div>
+    <div class="suerte" data-status="vacio">🎁</div>
+    <script>
+        var imagenes= document.querySelectorAll('.suerte');
+        imagenes.forEach(function(imagen){
+            imagen.addEventListener("click", function abrir(){
+                var estado=imagen.getAttribute('data-status');
+                if(estado=="vacio"){
+                    imagen.innerHTML="💩";
+                    alert("dsa");
+                }
+                else{
+                    imagen.innerHTML="🙀";
+                    alert("dsa");
+                }
+                imagen.removeEventListener("click",abrir);
+            })
+        });
+    </script>
+</body>
+</html>

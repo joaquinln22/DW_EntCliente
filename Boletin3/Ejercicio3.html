@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="crear" onclick="crearParrafos()">Crear parráfos</button>
+    <button id="color" onclick="cambiarColor()">Cambiar color</button>
+    <button id="tamano" onclick="cambiarTamano()">Cambiar tamaño</button>
+
+    <script>
+        function crearParrafos(){
+            for (let index = 0; index < 10; index++) {
+                let p=document.createElement("p");
+                p.textContent="Parráfo ";
+                document.body.appendChild(p);
+            }
+            document.getElementById("crear").disabled="true";
+        }
+        function cambiarColor(){
+            let parrafito=document.getElementsByTagName("p");
+            for (let index = 0; index < parrafito.length; index++) {
+                if((index%2)!=0){
+                    parrafito[index].style.color="red";
+                }
+                
+            }
+        }
+        function cambiarTamano(){
+            let parrafito=document.getElementsByTagName("p");
+            for (let index = (parrafito.length-5); index < parrafito.length; index++) {
+                parrafito[index].style.fontSize="50px";
+                
+                
+            }
+        }
+    </script>
+</body>
+</html>

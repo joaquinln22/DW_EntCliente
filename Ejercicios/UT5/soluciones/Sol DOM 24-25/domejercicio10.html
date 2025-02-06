@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="primera"> Este es el primer texto.</div>
+    <div id="segunda">
+	<p>Este es el segundo texto</p>
+    </div>
+
+    <script>
+        var d1=document.getElementById("primera");
+        var d2=document.getElementById("segunda");
+        var cambiarFondo=true;
+
+        d1.addEventListener("mouseover", function(){
+            d1.style.color="green";
+        });
+        d1.addEventListener("mouseout", function(){
+            d1.style.color="blue";
+        });
+
+        d2.addEventListener("click", function(){
+            if (cambiarFondo){
+                d2.style.backgroundColor="black";
+                d2.style.color="white";
+                cambiarFondo=false;
+            }
+            else{
+                d2.style.backgroundColor="white";
+                d2.style.color="black";
+                cambiarFondo=true;
+            }
+        });
+
+
+    </script>
+
+</body>
+</html>
