@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista</title>
+</head>
+<body>
+    <ul>
+        <li>Peras</li>
+        <li>Manzanas</li>
+        <li>Platanos</li>
+        <li>Limones</li>
+    </ul>
+
+    <script>
+        // Selecciona todos los elementos <li> de la lista y los almacena en un array
+        var elementos = document.getElementsByTagName("li");
+
+        // Recorre cada elemento de la lista
+        for(let i = 0; i < elementos.length; i++) {   
+            // Agrega un evento de clic a cada elemento <li>
+            elementos[i].addEventListener("click", function() {
+                // Verifica si el elemento ya tiene el texto tachado
+                if (elementos[i].style.textDecoration === "line-through") {
+                    // Si ya está tachado, lo quita (lo destacha)
+                    elementos[i].style.textDecoration = "none";
+                } else {
+                    // Si no está tachado, lo tacha
+                    elementos[i].style.textDecoration = "line-through";
+                }
+            });
+        }
+    </script>
+</body>
+</html>

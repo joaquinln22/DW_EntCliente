@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+</head>
+<body>
+    <input type="text" width="40">
+    <button onclick="crearElemento()">Crear</button>
+    <div id="elemento"></div>
+    
+    <!-- Al escribir h1, h2, h3, h4, etc quiero que en elemento se muestre un h1, en formato h1, y asi sucesivamente -->
+     <script>
+        function crearElemento() {
+            // Obtiene el valor del input de la página
+            var input = document.querySelector("input");
+            // Crea un nuevo elemento HTML con el nombre ingresado en el input
+            var elementito = document.createElement(input.value);
+            // Crea un nodo de texto con el mismo valor del input
+            var texto = document.createTextNode(input.value);
+            // Agrega el nodo de texto dentro del elemento recién creado
+            elementito.appendChild(texto);
+            // Agrega el nuevo elemento al contenedor con el ID "elemento"
+            document.getElementById("elemento").appendChild(elementito);
+        }
+    </script>
+</body>
+</html>

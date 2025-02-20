@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularios</title>
+    <style>
+        input[type="number"]:in-range{
+            background-color: limegreen;
+        }
+        input[type="number"]:out-of-range{
+            background-color: red;
+        }
+        button:nth-last-child(2), button:nth-last-child(3){
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <form onsubmit="return validar()" method="get" action="/hola.php">
+        Nombre: <input type="text" maxlength="30" name="nombre" id="nombre">
+        <br>
+        <br>
+        Apellidos: <input type="text" maxlength="50" size="40" name="apellidos" id="apellidos">
+        <br>
+        <br>
+        Edad: <input type="number" min="0" max="130" id="edad" name="edad">
+        <br>
+        <br>
+        Fecha: <input type="date" min="2025-02-02" id="fecha">
+        <br>
+        <br>
+        Contraseña: <input type="password" maxlength="4" id="password" pattern="[0-9]{4}">
+        <br>
+        <br>
+        % dependencia <input type="number" id="percent" name="percent" min="0" max="100" step="5">
+        <br>
+        <br>
+        <button type="submit" onclick="validar()">Submit validador</button>
+        <button type="reset">Reset</button>
+        <button type="submit">Submit sin validar</button>
+    </form>
+    <script>
+        function validar() {
+            let edad = document.getElementById("edad").value;
+            let fecha = document.getElementById("fecha").value;
+            let percent = document.getElementById("percent").value;
+            if(edad<0||edad>130){
+                alert("La edad fuera de rango (0-130)");
+                return false;
+            }
+            if(fecha<"2000-01-01"){
+                alert("Fecha fuera de rango (2000-01-01)");
+                return false;
+            }
+            if(percent<0||percent>100){
+                alert("% de dependencia fuera de rango");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>
