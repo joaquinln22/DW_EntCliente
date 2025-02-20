@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
     <style>
         #container {
             width: 400px;
@@ -14,15 +18,14 @@
             background-color: red;
             top: 0;
             left: 0;
-            transition: top 0.5s, left 0.5s; /* Agregamos efecto de transición */
+            transition: top 0.5s, left 0.5s; 
         }
     </style>
+</head> 
 <body>
     <p>
-        <button onclick="moveUp()">Arriba</button>
-        <button onclick="moveDown()">Abajo</button>
-        <button onclick="moveLeft()">Izquierda</button>
-        <button onclick="moveRight()">Derecha</button>
+        <button id="btn1" onclick="cuadrado()">Cuadrado</button>
+        <button id="btn2" onclick="triangulo()">Triángulo</button>
     </p> 
     
     <div id="container">
@@ -30,31 +33,38 @@
     </div>
 
     <script>
-        // Obtenemos el elemento del cuadrado rojo y su contenedor
         var elem = document.getElementById("animate");
         var container = document.getElementById("container");
-        
-        // Función para mover hacia arriba hasta el límite con animación
-        function moveUp() {
+        function cuadrado(){
+            derecha();
+            setTimeout(abajo, 1000);
+            setTimeout(izquierda, 2000);
+            setTimeout(arriba, 3000);
+        }
+        function arriba() {
             elem.style.top = "0px";
+            document.getElementById("btn1").disabled = false;
+            document.getElementById("btn2").disabled = false;
         }
         
-        // Función para mover hacia abajo hasta el límite con animación
-        function moveDown() {
+        function abajo() {
             var maxBottom = container.clientHeight - elem.offsetHeight;
             elem.style.top = maxBottom + "px";
         }
         
-        // Función para mover hacia la izquierda hasta el límite con animación
-        function moveLeft() {
+        function izquierda() {
             elem.style.left = "0px";
         }
         
-        // Función para mover hacia la derecha hasta el límite con animación
-        function moveRight() {
+        function derecha() {
+            document.getElementById("btn1").disabled = true;
+            document.getElementById("btn2").disabled = true;
             var maxRight = container.clientWidth - elem.offsetWidth;
             elem.style.left = maxRight + "px";
         }
+        function triangulo(){
+        }
+        
     </script>
 </body>
 </html>

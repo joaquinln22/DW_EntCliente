@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            cursor: pointer;
+            text-decoration: none;
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Lista de Tareas</h2>
+    <ul>
+        <li><div>Tarea 1</div></li>
+        <li><div>Tarea 2</div></li>
+        <li><div>Tarea 3</div></li>
+
+    </ul>
+    <br>
+    <strong>Tareas completadas: </strong><label id="contador"></label>
+    <script>
+        var elementos = document.getElementsByTagName("li");
+
+        for(let i = 0; i < elementos.length; i++) {   
+            elementos[i].addEventListener("click", function() {
+                if (elementos[i].style.textDecoration === "line-through") {
+                    elementos[i].style.textDecoration = "none";
+                } else {
+                    elementos[i].style.textDecoration = "line-through";
+                }
+            });
+        }
+        var contador = document.getElementById("contador");
+        var tachadas = 0;
+        for(let i = 0; i < elementos.length; i++) {
+            if (elementos[i].style.textDecoration === "line-through") {
+                tachadas++;
+            }
+        }
+        contador.innerHTML = tachadas;
+        setInterval(function() {
+            tachadas = 0;
+            for(let i = 0; i < elementos.length; i++) {
+                if (elementos[i].style.textDecoration === "line-through") {
+                    tachadas++;
+                }
+            }
+            contador.innerHTML = tachadas;
+        });
+    </script>
+</body>
+</html>
+</body>
+</html>
